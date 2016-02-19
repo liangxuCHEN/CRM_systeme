@@ -47,7 +47,7 @@
              <ul class="nav navbar-nav">
                  <li ><a href="{% url 'person_index' %}">Person</a></li>
                  <li ><a href="{% url 'bill_index' %}">Bill</a></li>
-                 <li ><a href="">退出</a></li>
+                 <li ><a href="{% url 'logout' %}">退出</a></li>
              </ul>
           </div>{% block nav %}{% endblock %}
         </div>
