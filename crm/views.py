@@ -9,6 +9,9 @@ from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django import forms
 from crm.forms import PersonForm, AuthenticationForm
 from crm.models import Person, Bill
+from datetime import datetime, timedelta
+from tool import send_mail
+from weather import get_three_days_weather
 # Create your views here.
 
 
@@ -71,11 +74,26 @@ def person_detail(request, person_id):
     else:
         return HttpResponseRedirect('/login')
 
+def add_person(request):
+    if request.user.is_authenticated():
+        if request.method == 'POST':
+            data = request.POST
+            form = PersonForm(data)
+            if form.is_valid():
+                form.save()
+                return HttpResponseRedirect('person')
+            else:
+                return render(request, 'add_person.html', {"form" : form})
+        else:
+            form = PersonForm()
+            return render(request, 'add_person.html', {"form" : form})
+    else:
+        return HttpResponseRedirect('/login')
+
 def add_bill(request):
     if request.user.is_authenticated():
         if request.method == 'POST':
             data = request.POST
-            print(data)
             person = Person.objects.get(id=data['person_id'])
             if person:
                 new_bill=Bill.objects.create(
@@ -110,3 +128,23 @@ def LoginView(request):
 def LogoutView(request):
     logout(request)
     return redirect('/')
+
+def check_bill(request):
+    content = {}
+    bills = Bill.objects.filter(travel_date=datetime.today()+timedelta(1))
+    if(len(bills) > 0):
+        for bill in bills:
+            city = bill.city or 'Paris,France'
+            mail_to = 'lchen@europely.com'
+            mail_to += ',' + bill.person.email
+            content['weather_info'] = get_three_days_weather(city=city)
+            res = send_mail(mail_to, u'飘零旅游温馨提示', content['weather_info'])
+            if res:
+            	bill.is_send_wether = True
+            	bill.save()
+    else:
+        content['weather_info'] = "<p>No bill</p>"
+
+    return HttpResponse(content['weather_info'])
+
+

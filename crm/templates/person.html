@@ -18,33 +18,53 @@
    </thead>
    <tbody>
   {% for person in person_list %}
-  	<tr>
-  	<td>{{person.id}}</td>
-  	<td>{{person.phone}}</td>
-  	<td>{{person.name}}</td>
-  	<td>{{person.email}}</td>
+      <tr>
+      <td>{{person.id}}</td>
+      <td>{{person.phone}}</td>
+      <td>{{person.name}}</td>
+      <td>{{person.email}}</td>
     <td>{{person.comment}}</td>
     <td><input type="radio" value="{{person.id}}" name="person_id"></td>
-  	</tr>
+      </tr>
   {% endfor %}
  </tbody>
  </table>
  {% endif %}
  
  </div>
-
-<div class="form-group">
-    <label>bill备注: </label>
-    <input type="text" class="form-control" name="comment" /> 
-</div>
-<div class="form-group">
-    <input type="date" name="travel_date" class="form-control">
-</div> 
-<div class="form-group">
-    <input type="submit" value="提交" class="btn btn-primary"/>
+<div class="col-sm-6 col-md-6" id="item">
+  <div class="thumbnail">
+      <div class="caption">
+        <div class="form-group">
+            <label>bill备注: </label>
+            <input type="text" class="form-control" name="comment" /> 
+        </div>
+        <div class="form-group">
+            <label>travel date: </label>
+            <input type="date" name="travel_date" class="form-control">
+        </div> 
+        <div class="form-group">
+            <label>City:</label>
+            <select name='city' class="form-control">
+              <option value="Nice,France">尼斯</option>
+              <option value="Paris,France">巴黎</option>
+              <option value="Bordeaux,France">波尔多</option>
+              <option value="Roman,Italy">罗马</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="提交" class="btn btn-primary"/>
+        </div>
+       </div>
+   </div>
 </div>
 </form>
- <hr>
- <a href="" class="btn btn-primary">添加会员</a>   
+<div class="col-sm-6 col-md-3" id="item">
+  <div class="thumbnail">
+      <div class="caption">
+         <a href="{% url 'add_person' %}" class="btn btn-primary">添加会员</a> 
+      </div>
+  </div>
+</div>  
  
 {% endblock %}

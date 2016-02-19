@@ -16,8 +16,15 @@ class Person(models.Model):
     comment = models.CharField(max_length = 200, null = True, blank = True)
 
 class Bill(models.Model):
+    CITY_MODEL = (
+        ('Nice,France', u'尼斯'),
+        ('Paris,France', u'巴黎'),
+        ('Bordeaux,France', u'波尔多'),
+        ('Roman,Italy', u'罗马'),
+    )
     person = models.ForeignKey(Person)
     travel_date = models.DateField()
+    city = models.CharField(max_length=15, choices = CITY_MODEL, blank = True, null = True)
     is_send_wether = models.BooleanField(default=False)
     is_send_plan = models.BooleanField(default=False)
     comment = models.CharField(max_length = 200, null = True, blank = True)

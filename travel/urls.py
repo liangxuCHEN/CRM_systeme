@@ -24,5 +24,7 @@ urlpatterns = [
     url(r'^logout$', views.LogoutView, name='logout'),
     url(r'^bill$', views.bill_index, name='bill_index'),
     url(r'^person$', views.person_index, name='person_index'),
-    url(r'^add_bill/$', views.add_bill, name='add_bill'),    
+    url(r'^add_person$', views.add_person, name='add_person'),
+    url(r'^add_bill$', views.add_bill, name='add_bill'),
+    url(r'^check_bill$', views.check_bill, name='check_bill'),
 ]

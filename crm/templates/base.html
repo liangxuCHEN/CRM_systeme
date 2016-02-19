@@ -45,8 +45,8 @@
          <div id="navbar" class="navbar-collapse collapse">
            <div class="navbar-collapse collapse">
              <ul class="nav navbar-nav">
-                 <li ><a href="">Person</a></li>
-                 <li ><a href="">Bill</a></li>
+                 <li ><a href="{% url 'person_index' %}">Person</a></li>
+                 <li ><a href="{% url 'bill_index' %}">Bill</a></li>
                  <li ><a href="">退出</a></li>
              </ul>
           </div>{% block nav %}{% endblock %}
