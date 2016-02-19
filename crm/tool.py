@@ -12,7 +12,7 @@ import email.Encoders as encoders
 
 SMTP_SERVER = 'smtp.163.com'
 MAIL_FROM = 'chenliangxu68@163.com'
-PW = '163$323428'
+PW = 'xxx'
 
 
 def send_mail(mail_to, subject, msg_txt):
