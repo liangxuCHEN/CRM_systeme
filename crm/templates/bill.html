@@ -28,7 +28,26 @@
  </tbody>
  </table>
  {% endif %}
- 
+   <div class="pull-left">
+      <ul class="pagination">
+            {% if bill_list.has_previous %}
+                <li><a href="?page={{ bill_list.previous_page_number }}">prev</a></li>
+            {% endif %}
+            <script type="text/javascript">
+            for (var i=1;i<={{ bill_list.paginator.num_pages }};i++)
+            {
+             if (i == {{ bill_list.number }}) {
+                document.write("<li class='active'> <a href='?page=" + i + "'>" + i + "</a></li>");
+             } else {
+              document.write("<li> <a href='?page=" + i + "'>" + i + "</a></li>");
+             }
+            }
+            </script>
+            {% if bill_list.has_next %}
+               <li> <a href="?page={{ bill_list.next_page_number }}">next</a></li>
+            {% endif %}
+      </ul>
+  </div>
  </div>
  
 {% endblock %}

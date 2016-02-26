@@ -44,7 +44,7 @@ def check_bill_each_day(bills):
         for bill in bills:
             body += generate_bill_body(bill)
 
-    mail_to = 'lchen@europely.com'
+    mail_to = 'lchen@europely.com,reservation@europely.com'
     res = send_mail(mail_to, u"明天出行订单提醒", body)
     if not res:
         return u'<p id="info">邮件放送不成功, <a href="http://112.74.109.3:4040">请查看订单情况</a></p>'
@@ -53,7 +53,7 @@ def check_bill_each_day(bills):
 def generate_bill_body(bill):
     bill_body =u"<hr>"
     city = bill.city or 'Paris,France'
-    bill_body += u"<p>客人 : %s , 邮箱 : %s, 旅游目的地:%s明天的天气情况: </p>"  % (bill.person.name, bill.person.email, city)
+    bill_body += u"<p>客人 : %s , 邮箱 : %s, 旅游目的地:%s: </p>"  % (bill.person.name, bill.person.email, city)
     bill_body += u"订单备注: %s" % bill.comment
     bill_body += get_three_days_weather(city=city) + u"<hr><br>"
     bill.is_send_wether = True

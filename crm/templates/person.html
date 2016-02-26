@@ -44,7 +44,27 @@
  </tbody>
  </table>
  {% endif %}
- 
+  <div class="pull-left">
+      <ul class="pagination">
+            {% if person_list.has_previous %}
+                <li><a href="?page={{ person_list.previous_page_number }}">prev</a></li>
+            {% endif %}
+            <script type="text/javascript">
+            for (var i=1;i<={{ person_list.paginator.num_pages }};i++)
+            {
+             if (i == {{ person_list.number }}) {
+                document.write("<li class='active'> <a href='?page=" + i + "'>" + i + "</a></li>");
+             } else {
+              document.write("<li> <a href='?page=" + i + "'>" + i + "</a></li>");
+             }
+            }
+            </script>
+            {% if person_list.has_next %}
+               <li> <a href="?page={{ person_list.next_page_number }}">next</a></li>
+            {% endif %}
+      </ul>
+  </div>
+
  </div>
 <div class="col-sm-6 col-md-6" id="item">
   <div class="thumbnail">
