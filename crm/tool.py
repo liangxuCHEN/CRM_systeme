@@ -39,7 +39,7 @@ def send_mail(mail_to, subject, msg_txt):
 
 def check_bill_each_day(bills):
     num = len(bills)
-    body = u"<p>今天有%d邮件提醒需要发送,他们明天就要出发旅游</p><br><br>" % (num)
+    body = u"<p>今天有%d个邮件提醒需要发送,他们明天就要出发旅游</p><br><br>" % (num)
     if(num > 0):
         for bill in bills:
             body += generate_bill_body(bill)

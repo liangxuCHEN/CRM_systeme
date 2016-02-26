@@ -23,7 +23,7 @@ def person_index(request):
     if request.user.is_authenticated():
         content = {}
         persons = Person.objects.all()
-
+        content["form"] = PersonForm()
         page_size =  10
         paginator = Paginator(persons, page_size)
         try:

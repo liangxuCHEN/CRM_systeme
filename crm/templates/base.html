@@ -45,8 +45,8 @@
          <div id="navbar" class="navbar-collapse collapse">
            <div class="navbar-collapse collapse">
              <ul class="nav navbar-nav">
-                 <li ><a href="{% url 'person_index' %}">Person</a></li>
-                 <li ><a href="{% url 'bill_index' %}">Bill</a></li>
+                 <li ><a href="{% url 'person_index' %}">客户信息</a></li>
+                 <li ><a href="{% url 'bill_index' %}">订单</a></li>
                  <li ><a href="{% url 'logout' %}">退出</a></li>
              </ul>
           </div>{% block nav %}{% endblock %}
@@ -61,7 +61,7 @@
 
 <div id="footer">
         {% block footer %}
-        &copy; Copyright 2016 by <a href="http://chenliangxu.github.io">CHEN Liangxu.</a>
+        &copy; Copyright 2016 by <a href="http://chenliangxu.github.io">CHEN Liangxu</a>
         {% endblock %}
  </div>
     <!-- Bootstrap core JavaScript

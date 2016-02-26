@@ -7,6 +7,20 @@
       <strong>{{ info }}</strong>
   </div>
 {% endif %}
+{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-error">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-error">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
 </div>
 <div class="jumbotron" id="member">
  <form role="form" action="{% url 'add_bill' %}" method="post">
@@ -14,7 +28,7 @@
 {% if person_list %}
  <table class="table">
    <thead>
-     <tr><td>#</td><td>电话</td><td>名字</td><td>email</td><td>Comment</td><td>Edit</td></tr>
+     <tr><td>#</td><td>电话</td><td>名字</td><td>电子邮箱</td><td>备注</td><td>勾选</td></tr>
    </thead>
    <tbody>
   {% for person in person_list %}
@@ -35,16 +49,17 @@
 <div class="col-sm-6 col-md-6" id="item">
   <div class="thumbnail">
       <div class="caption">
+       <p>勾选上面的客人，创建行程提醒任务</p>
         <div class="form-group">
-            <label>bill备注: </label>
+            <label>行程提醒任务备注: </label>
             <input type="text" class="form-control" name="comment" /> 
         </div>
         <div class="form-group">
-            <label>travel date: </label>
+            <label>旅游出发日期: </label>
             <input type="date" name="travel_date" class="form-control">
         </div> 
         <div class="form-group">
-            <label>City:</label>
+            <label>旅游目的地:</label>
             <select name='city' class="form-control">
              <option value="Paris,France">巴黎</option>
              <option value="Avignon,France">阿维尼翁</option>
@@ -60,7 +75,7 @@
             </select>
         </div>
         <div class="form-group">
-            <input type="submit" value="提交" class="btn btn-primary"/>
+            <input type="submit" value="提交任务" class="btn btn-primary"/>
         </div>
        </div>
    </div>
@@ -69,7 +84,10 @@
 <div class="col-sm-6 col-md-3" id="item">
   <div class="thumbnail">
       <div class="caption">
-         <a href="{% url 'add_person' %}" class="btn btn-primary">添加会员</a> 
+         <form action="{% url 'add_person' %}" method="post">{% csrf_token %}
+           {{ form.as_p }}
+            <input type="submit" value="添加客户"  class="btn btn-primary" />
+         </form>
       </div>
   </div>
 </div>  
