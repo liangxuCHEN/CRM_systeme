@@ -8,7 +8,7 @@ class PersonAdmin(admin.ModelAdmin):
     fields = ('phone', 'name', 'sex','email','comment')
 
 class BillAdmin(admin.ModelAdmin):
-    list_display = ('travel_date','comment')
+    list_display = ('travel_date', 'person','comment')
 
 admin.site.register(Person, PersonAdmin)
 admin.site.register(Bill, BillAdmin)

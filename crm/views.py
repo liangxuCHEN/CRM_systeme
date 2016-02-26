@@ -10,10 +10,8 @@ from django import forms
 from crm.forms import PersonForm, AuthenticationForm
 from crm.models import Person, Bill
 from datetime import datetime, timedelta
-from tool import send_mail
-from weather import get_three_days_weather
+from tool import send_mail, check_bill_each_day
 # Create your views here.
-
 
 def home(request):
     if request.user.is_authenticated():
@@ -132,19 +130,7 @@ def LogoutView(request):
 def check_bill(request):
     content = {}
     bills = Bill.objects.filter(travel_date=datetime.today()+timedelta(1))
-    if(len(bills) > 0):
-        for bill in bills:
-            city = bill.city or 'Paris,France'
-            mail_to = 'lchen@europely.com'
-            mail_to += ',' + bill.person.email
-            content['weather_info'] = get_three_days_weather(city=city)
-            res = send_mail(mail_to, u'飘零旅游温馨提示', content['weather_info'])
-            if res:
-            	bill.is_send_wether = True
-            	bill.save()
-    else:
-        content['weather_info'] = "<p>No bill</p>"
-
+    content['weather_info'] = check_bill_each_day(bills)
     return HttpResponse(content['weather_info'])
 
 
