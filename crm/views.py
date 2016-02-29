@@ -10,7 +10,7 @@ from django import forms
 from crm.forms import PersonForm, AuthenticationForm
 from crm.models import Person, Bill
 from datetime import datetime, timedelta
-from tool import send_mail, check_bill_each_day
+from tool import send_mail, check_bill_each_day,generate_booking_mail
 # Create your views here.
 
 def home(request):
@@ -133,4 +133,37 @@ def check_bill(request):
     content['weather_info'] = check_bill_each_day(bills)
     return HttpResponse(content['weather_info'])
 
+def booking_cave(request):
+    if request.method == "POST":
+        data=request.POST
+        try:
+            new_person = Person.objects.get_or_create(
+                name=data['clientName'],
+                phone=data["phone"],
+                sex="M",
+                email=data['email'],
+                comment=u"visit chateau from " + data['from_site']
+            )
+            if len(new_person) > 1:
+                new_person = new_person[0]
+
+            message = u'参观人数: '+data["member"] +u', 儿童:  ' + data["has_child"] + u'个, 参观酒庄, 留言 : '+data["commentText"]
+            new_bill = Bill.objects.create(
+                person=new_person,
+                travel_date=data['visitDate'],
+                city="Bordeaux,France",
+                comment=message
+            )
+            generate_booking_mail(data)
+            content =  u"<p>您好%s</p><h4>我们已经收到您的预约信息，行程顾问会尽快回复您</h4>"  % data['clientName']
+            return HttpResponse(content)
+        except:
+           content =  u"<p>您好%s</p><h4>我们非常抱歉，您的预约没有成功，请直接联系客服: 40084-50085 </h4>"  % data['clientName']
+           return HttpResponse(content)
+    else:
+        try:
+            site = request.GET["site"]
+        except:
+            site = "iPiaoling"
+        return render(request, "booking.html", {'from_site' :  site})
 

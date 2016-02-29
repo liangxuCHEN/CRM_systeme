@@ -60,4 +60,20 @@ def generate_bill_body(bill):
     bill.save()
     return bill_body
 
-#print send_mail('chenliangxu68@163.com', 'lchen@europely.com', 'weather', u"办法是在发送HTML的同时再附加一个纯文本")
+def generate_booking_mail(data):
+    body = u"<p>来自 %s 网站的咨询, 有一个客户的预约 <br>" % data['from_site']
+    body += u'姓名:  ' + data['clientName'] + '<br>'
+    body += u'电话:  ' + data['phone'] + '<br>'
+    body += u'邮箱:  ' + data['email']+ '<br>'
+    body += u'参观日期:  ' + data['visitDate'] + '<br>'
+    cave =  data.getlist("caveName")
+    s = u""
+    for x in cave:
+        s += x + " ; "
+    body += u'参观酒庄:  ' + s + '<br>'
+    body += u'参观人数:  ' + data['member'] + '<br>'
+    body += u'儿童:  ' + data['has_child'] + '<br>'
+    body += u'留言: ' + data['commentText'] + '<br></p>'
+    mail_to = 'lchen@europely.com,reservation@europely.com'
+    res = send_mail(mail_to, u"酒庄预约咨询", body)
+

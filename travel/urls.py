@@ -27,4 +27,5 @@ urlpatterns = [
     url(r'^add_person$', views.add_person, name='add_person'),
     url(r'^add_bill$', views.add_bill, name='add_bill'),
     url(r'^check_bill$', views.check_bill, name='check_bill'),
+    url(r'^booking_cave/$', views.booking_cave, name='booking_cave'),
 ]
