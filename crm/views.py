@@ -144,6 +144,7 @@ def booking_cave(request):
                 email=data['email'],
                 comment=u"visit chateau from " + data['from_site']
             )
+            """
             if len(new_person) > 1:
                 new_person = new_person[0]
 
@@ -154,6 +155,7 @@ def booking_cave(request):
                 city="Bordeaux,France",
                 comment=message
             )
+            """
             generate_booking_mail(data)
             content =  u"<p>您好%s</p><h4>我们已经收到您的预约信息，行程顾问会尽快回复您</h4>"  % data['clientName']
             return HttpResponse(content)
