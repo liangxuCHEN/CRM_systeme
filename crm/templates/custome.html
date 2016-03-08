@@ -1,0 +1,290 @@
+{% extends "base_without_bar.html" %}
+{% block head %}
+<style type="text/css">
+@import url(http://fonts.useso.com/css?family=Montserrat:400,700);
+html{    background:url(http://7xoom6.com1.z0.glb.clouddn.com/bg-feedback-img.jpg) no-repeat;
+  background-size: cover;
+  height:100%;
+}
+
+#feedback-page{
+    text-align:center;
+}
+
+#form-main{
+    width:100%;
+    float:left;
+    padding-top:0px;
+}
+
+#form-div {
+    background-color:rgba(72,72,72,0.4);
+    padding-left:35px;
+    padding-right:35px;
+    padding-top:35px;
+    padding-bottom:50px;
+    width: 450px;
+    float: left;
+    left: 50%;
+    position: absolute;
+  margin-top:30px;
+    margin-left: -260px;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+}
+
+.feedback-input {
+    color:#3c3c3c;
+    font-family: Helvetica, Arial, sans-serif;
+  font-weight:500;
+    font-size: 18px;
+    border-radius: 0;
+    line-height: 22px;
+    background-color: #fbfbfb;
+    padding: 13px 13px 13px 54px;
+    margin-bottom: 10px;
+    width:100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+  border: 3px solid rgba(0,0,0,0);
+}
+
+.feedback-input:focus{
+    background: #fff;
+    box-shadow: 0;
+    border: 3px solid #3498db;
+    color: #3498db;
+    outline: none;
+  padding: 13px 13px 13px 54px;
+}
+
+.focused{
+    color:#30aed6;
+    border:#30aed6 solid 3px;
+}
+
+/* Icons ---------------------------------- */
+#num{
+    background-image: url(http://7xoom6.com1.z0.glb.clouddn.com/icon_user-black.png);
+    background-size: 20px 20px;
+    background-position: 15px 12px;
+    background-repeat: no-repeat;
+}
+
+#place{
+    background-image: url(http://7xoom6.com1.z0.glb.clouddn.com/icon_location-black.png);
+    background-size: 20px 20px;
+    background-position: 15px 12px;
+    background-repeat: no-repeat;
+}
+
+#date_begin{
+     background-image: url(http://7xoom6.com1.z0.glb.clouddn.com/icon_calendar-black.png);
+    background-size: 20px 20px;
+    background-position: 15px 12px;
+    background-repeat: no-repeat;
+}
+
+#day{
+     background-image: url(http://7xoom6.com1.z0.glb.clouddn.com/icon_clock-black.png);
+    background-size: 20px 20px;
+    background-position: 15px 12px;
+    background-repeat: no-repeat;
+}
+
+
+#comment{
+    background-image: url(http://7xoom6.com1.z0.glb.clouddn.com/icon_edit-black.png);
+    background-size: 20px 20px;
+    background-position: 15px 12px;
+    background-repeat: no-repeat;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    line-height: 150%;
+    resize:vertical;
+}
+
+input:hover, textarea:hover,
+input:focus, textarea:focus {
+    background-color:white;
+}
+
+#button-blue{
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    float:left;
+    width: 100%;
+    border: #fbfbfb solid 4px;
+    cursor:pointer;
+    background-color: #3498db;
+    color:white;
+    font-size:24px;
+    padding-top:22px;
+    padding-bottom:22px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
+}
+
+#button-blue:hover{
+    background-color: rgba(0,0,0,0);
+    color: #0493bd;
+}
+    
+.submit:hover {
+    color: #3498db;
+}
+    
+.ease {
+    width: 0px;
+    height: 74px;
+    background-color: #fbfbfb;
+    -webkit-transition: .3s ease;
+    -moz-transition: .3s ease;
+    -o-transition: .3s ease;
+    -ms-transition: .3s ease;
+    transition: .3s ease;
+}
+
+.submit:hover .ease{
+  width:100%;
+  background-color:white;
+}
+
+@media only screen and (max-width: 580px) {
+    #form-div{
+        left: 3%;
+        margin-right: 3%;
+        width: 88%;
+        margin-left: 0;
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+}
+</style>
+{% endblock %}
+{% block title %}Custome Form{% endblock %}
+{% block content %}
+
+  <form class="form" id="form1" action="" method="POST">
+   {% csrf_token %}
+    <input type="hidden" name="from_site" value="{{from_site}}">
+    <div id="form-main">
+       <div id="form-div">
+        
+      <p class="place">
+        <input name="place" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="目的地" id="place" required="true"/>
+      </p>
+
+       <p class="date_begin">
+        <input name="date_begin" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="出发时间" id="date_begin" required="true"/>
+      </p>
+
+      <p class="day">
+        <input name="day" type="number" class="feedback-input" id="day" placeholder="游玩天数" required="true"/>
+      </p>
+
+      <p class="num">
+        <input name="num" type="number" class="feedback-input" id="num" placeholder="人数" required="true"/>
+      </p>
+      
+      <p class="text">
+        <textarea name="comment" class="validate[required,length[6,300]] feedback-input" id="comment">特殊需求</textarea>
+      </p>
+         
+      <div class="submit">
+        <input value=" 请填写所有空格后 下一步  " id="button-blue" data-toggle="modal" data-target="#myModal"/>
+        <div class="ease"></div>
+      </div>
+     </div>
+    </div>
+  
+      <!---second form -->
+    <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="well">
+             <fieldset>
+               <div id="legend" class="">
+                 <legend class="">请您留下联系方式</legend>
+               </div>
+
+               <div class="control-group">
+
+                     <!-- Text input-->
+                     <label class="control-label">姓名:</label>
+                     <div class="controls">
+                       <input type="text" placeholder=""  class="form-control" name='clientName' required="true">
+                       <p class="help-block"></p>
+                     </div>
+                   </div>
+
+               <div class="control-group">
+
+                     <!-- Text input-->
+                     <label class="control-label">联系电话:</label>
+                     <div class="controls">
+                       <input type="text" placeholder=""  class="form-control" name='phone' required="true">
+                       <p class="help-block"></p>
+                     </div>
+                   </div>
+
+             <div class="control-group">
+                   <!-- Text input-->
+
+                   <label class="control-label" >邮箱:</label>
+                   <div class="controls">
+                     <input type="email" placeholder="example@email.com"  class="form-control" name="email" required="true">
+                     <p class="help-block"></p>
+                   </div>
+                 </div>
+              
+               <div class="control-group">
+                 <label class="control-label" >酒店星级:</label>
+	                            <input type="radio" name="customizeHotelLevel" checked="" value="经济型"><label >经济型</label>
+	                            <input type="radio" name="customizeHotelLevel" value="3星"><label >3星</label>
+	                            <input type="radio" name="customizeHotelLevel" value="4星"><label >4星</label>
+	                            <input type="radio" name="customizeHotelLevel" value="5星"><label >5星</label>
+	 </div>
+	 <div class="control-group">
+                 <label class="control-label" >旅游偏好:</label>
+                                          <input type="hidden" name="customizePreference" value="no answer" checked="">
+	                            <input type="checkbox" name="customizePreference" value="自然景观"><label >自然景观</label>
+	                            <input type="checkbox" name="customizePreference" value="文化历史"><label >文化历史</label>
+	                            <input type="checkbox" name="customizePreference" value="时尚购物"><label >时尚购物</label>
+	                        </div>
+
+                 <div class="control-group">
+                   <!-- Button -->
+                   <div class="controls">
+                     <button class="btn btn-primary">提交</button>
+                   </div>
+                   </div>
+
+             </fieldset>
+        </div>
+     </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+      </div>
+    </div>
+  </div>
+ </div>
+</div>
+<!---second form -->
+
+    </form>
+ 
+</div>
+{% endblock %}
+

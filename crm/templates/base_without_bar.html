@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Louis">
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://7xpaqx.com2.z0.glb.qiniucdn.com/djangobootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap theme -->
+    <link href="http://7xpaqx.com2.z0.glb.qiniucdn.com/djangobootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template 
+    <link href="theme.css" rel="stylesheet">-->
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    {% block head %}
+    <title>{% block title %}CRM{% endblock %}</title>
+    {% endblock %}
+  </head>
+
+ <body role="document">
+    <div class="panel panel-primary"> 
+       <div class="panel-heading">
+         <strong>定制我的行程 </strong><small>旅行顾问服务</small><div class="pull-right">客服 : 40084-50085</div>
+       </div>
+
+
+<!-- content -->
+<div class="container">{% block content %}{% endblock %}</div>
+
+
+    {% block script %}
+    
+    {% endblock %}
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+     <script src="http://7xpaqx.com2.z0.glb.qiniucdn.com/djangojquery.min.js"></script>
+    <script src="http://7xpaqx.com2.z0.glb.qiniucdn.com/djangobootstrap.min.js"></script>
+    <script src="http://7xpaqx.com2.z0.glb.qiniucdn.com/djangodocs.min.js"></script>
+
+  </body>
+</html>

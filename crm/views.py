@@ -10,7 +10,7 @@ from django import forms
 from crm.forms import PersonForm, AuthenticationForm
 from crm.models import Person, Bill
 from datetime import datetime, timedelta
-from tool import send_mail, check_bill_each_day,generate_booking_mail
+from tool import send_mail, check_bill_each_day,generate_booking_mail, generate_custome_mail
 # Create your views here.
 
 def home(request):
@@ -169,3 +169,26 @@ def booking_cave(request):
             site = "iPiaoling"
         return render(request, "booking.html", {'from_site' :  site})
 
+def custome_travel(request):
+    if request.method == "POST":
+        data=request.POST
+        try:
+            new_person = Person.objects.get_or_create(
+                name=data['clientName'],
+                phone=data["phone"],
+                sex="M",
+                email=data['email'],
+                comment=u"custome travel from " + data['from_site']
+                )
+
+            generate_custome_mail(data)
+            content =  u"<p>您好%s</p><h4>我们已经收到您的定制信息，行程顾问会尽快回复您</h4>"  % data['clientName']
+            return HttpResponse(content)
+        except:
+           content =  u"<p>您好%s</p><h4>我们非常抱歉，您的定制信息没有发送成功，请直接联系客服: 40084-50085 </h4>"  % data['clientName']
+           return HttpResponse(content)
+    try:
+        site = request.GET["site"]
+    except:
+        site = "iPiaoling"
+    return render(request, "custome.html", {'from_site' :  site})
