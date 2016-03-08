@@ -12,6 +12,7 @@
 
     <!-- Bootstrap theme -->
     <link href="http://7xpaqx.com2.z0.glb.qiniucdn.com/djangobootstrap-theme.min.css" rel="stylesheet">
+    <link href="http://7xoom6.com1.z0.glb.clouddn.com/custome_custome.css" rel="stylesheet">
 
     <!-- Custom styles for this template 
     <link href="theme.css" rel="stylesheet">-->
@@ -32,7 +33,7 @@
  <body role="document">
     <div class="panel panel-primary"> 
        <div class="panel-heading">
-         <strong>定制我的行程 </strong><small>旅行顾问服务</small><div class="pull-right">客服 : 40084-50085</div>
+         <strong>定制我的行程 </strong><small>旅行顾问服务</small><div class="pull-right">{% block service %}{% endblock %}</div>
        </div>
 
 

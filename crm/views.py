@@ -189,6 +189,13 @@ def custome_travel(request):
            return HttpResponse(content)
     try:
         site = request.GET["site"]
+        service_phone = request.GET["service_phone"]
     except:
-        site = "iPiaoling"
-    return render(request, "custome.html", {'from_site' :  site})
+        site = u"客服电话"
+        service_phone = "400-845-0085"
+
+    content ={
+       "from_site" : site,
+       "service_phone" : site + " : "+ service_phone,
+    }
+    return render(request, "custome.html", content)
