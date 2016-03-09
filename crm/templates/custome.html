@@ -7,6 +7,7 @@
   <form class="form" id="form1" action="" method="POST">
    {% csrf_token %}
     <input type="hidden" name="from_site" value="{{from_site}}">
+    <input type="hidden" name="service_phone" value="{{service_phone}}">
     <div id="form-main">
        <div id="form-div">
         
@@ -73,9 +74,9 @@
              <div class="control-group">
                    <!-- Text input-->
 
-                   <label class="control-label" >邮箱:</label>
+                   <label class="control-label" >邮箱,QQ或其他联系方式:</label>
                    <div class="controls">
-                     <input type="email" placeholder="example@email.com"  class="form-control" name="email" required="true">
+                     <input type="text"  class="form-control" name="email" required="true">
                      <p class="help-block"></p>
                    </div>
                  </div>

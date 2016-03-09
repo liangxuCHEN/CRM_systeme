@@ -144,30 +144,28 @@ def booking_cave(request):
                 email=data['email'],
                 comment=u"visit chateau from " + data['from_site']
             )
-            """
-            if len(new_person) > 1:
-                new_person = new_person[0]
 
-            message = u'参观人数: '+data["member"] +u', 儿童:  ' + data["has_child"] + u'个, 参观酒庄, 留言 : '+data["commentText"]
-            new_bill = Bill.objects.create(
-                person=new_person,
-                travel_date=data['visitDate'],
-                city="Bordeaux,France",
-                comment=message
-            )
-            """
-            generate_booking_mail(data)
-            content =  u"<p>您好%s</p><h4>我们已经收到您的预约信息，行程顾问会尽快回复您</h4>"  % data['clientName']
-            return HttpResponse(content)
+            if generate_booking_mail(data):
+                content =  u"<p>您好%s</p><h4>我们已经收到您的预约信息，行程顾问会尽快回复您, 谢谢</h4>"  % data['clientName']
+            else:
+                content =  u"<p>您好%s</p><h4>我们非常抱歉，您的预约没有成功，请直接联系%s</h4>"  % (data['clientName'], data['service_phone'])
         except:
-           content =  u"<p>您好%s</p><h4>我们非常抱歉，您的预约没有成功，请直接联系客服: 40084-50085 </h4>"  % data['clientName']
-           return HttpResponse(content)
-    else:
-        try:
-            site = request.GET["site"]
-        except:
-            site = "iPiaoling"
-        return render(request, "booking.html", {'from_site' :  site})
+           content =  u"<p>您好%s</p><h4>我们非常抱歉，您的预约没有成功，请直接联系%s</h4>"  % (data['clientName'], data['service_phone'])
+        
+        return HttpResponse(content)
+    
+    try:
+        site = request.GET["site"]
+        service_phone = request.GET["service_phone"]
+    except:
+        site = u"客服电话"
+        service_phone = "400-845-0085"
+
+    content ={
+       "from_site" : site,
+       "service_phone" : site + u"客服 : "+ service_phone,
+    }
+    return render(request, "booking.html", content)
 
 def custome_travel(request):
     if request.method == "POST":
@@ -181,12 +179,14 @@ def custome_travel(request):
                 comment=u"custome travel from " + data['from_site']
                 )
 
-            generate_custome_mail(data)
-            content =  u"<p>您好%s</p><h4>我们已经收到您的定制信息，行程顾问会尽快回复您</h4>"  % data['clientName']
-            return HttpResponse(content)
+            if generate_custome_mail(data):
+                content =  u"<p>您好%s</p><h4>我们已经收到您的定制信息，行程顾问会尽快回复您,谢谢</h4>"  % data['clientName']
+            else:
+                content =   u"<p>您好%s</p><h4>我们非常抱歉，您的预约没有成功，请直接联系%s</h4>"  % (data['clientName'], data['service_phone'])
         except:
-           content =  u"<p>您好%s</p><h4>我们非常抱歉，您的定制信息没有发送成功，请直接联系客服: 40084-50085 </h4>"  % data['clientName']
-           return HttpResponse(content)
+           content =   u"<p>您好%s</p><h4>我们非常抱歉，您的预约没有成功，请直接联系%s</h4>"  % (data['clientName'], data['service_phone'])
+        return HttpResponse(content)
+    
     try:
         site = request.GET["site"]
         service_phone = request.GET["service_phone"]
@@ -196,6 +196,6 @@ def custome_travel(request):
 
     content ={
        "from_site" : site,
-       "service_phone" : site + " : "+ service_phone,
+       "service_phone" : site + u"客服 : "+ service_phone,
     }
     return render(request, "custome.html", content)

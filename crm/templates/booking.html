@@ -1,9 +1,36 @@
 {% extends "base_without_bar.html" %}
 {% block title %}酒庄预约{% endblock %}
+{% block head %}
+<style type="text/css">
+html{    background:url(http://7xoom6.com1.z0.glb.clouddn.com/bg-psb.jpg) no-repeat;
+  background-size: cover;
+  height:100%;
+}
+  #form-div {
+    width: 700px;
+    left: 40%;
+    color: #FFFFFF;
+    font-size: 15px;
+  }
+  legend {
+    color: #FFFFFF;
+  }
+.tab-content {
+  margin-top: 18px;
+}
+a{color:  #FFFFFF;}
+
+</style>
+{% endblock %}
+{% block service %} {{service_phone}} {% endblock %}
 {% block content %}
-  <form role="form" action="{% url 'booking_cave' %}" method="POST">
+
+  <form role="form" action="{% url 'booking_cave' %}" method="POST" id="form1">
+  <div id="form-main">
+  <div id="form-div">
    {% csrf_token %}
     <input type="hidden" name="from_site" value="{{from_site}}">
+    <input type="hidden" name="service_phone" value="{{service_phone}}">
     <fieldset>
       <div id="legend" class="">
         <legend class="">酒庄预约</legend>
@@ -50,34 +77,118 @@
               <input type="radio" value="3个或以上" name="has_child">
               3+
         </div>
+          
+    <hr class="feature-divider">
+     <p>*建议提前一周至四周预约参观</p>
+    <ul class="nav nav-tabs" role="tablist" id="feature-tab">
+        <li class="active"><a href="#tab-hot" role="tab" data-toggle="tab">热门</a></li>
+        <li><a href="#tab-bordeau" role="tab" data-toggle="tab">波尔多酒庄</a></li>
+        <li><a href="#tab-borgunde" role="tab" data-toggle="tab">勃艮第葡萄园</a></li>
+        <li><a href="#tab-champaine" role="tab" data-toggle="tab">香槟酒庄</a></li>
+        <li><a href="#tab-other" role="tab" data-toggle="tab">其他</a></li>
+    </ul>
 
-   <div class="form-group">
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab-hot">
 
-          <!-- Select Multiple -->
-          <label class="control-label">参观酒庄</label>
-          <div class="controls">
-            <select multiple="multiple" name='caveName'  class="form-control">
-              <option>Chateau Lafite Roths child拉斐庄</option>
-              <option>Chateau Latour拉图庄</option>
-              <option>Chateau Haut-Brion奥比昂庄</option>
-              <option>Chateau Margaux玛歌庄</option>
-              <option>Chateau Mouton Rothschild木桐庄</option>
-              <option>Chateau Ch Blanc白马庄</option>
-              <option>Chateau Ausone奥松庄</option>
-              <option>Petrus柏翠庄</option>
-              <option>波尔多一级酒庄</option>
-              <option>波尔多二级酒庄</option>
-              <option>波尔多列级酒庄</option>
-              <option>Moet Chandon酩悦香槟酒庄</option>
-              <option>Champagne Pommery 柏瑞香槟</option>
-              <option>Champagne Mumm 玛姆香槟</option>
-              <option>兰斯香槟酒庄</option>
-              <option>勃艮第葡萄园</option>
-            </select>
-            </div>
-          <p class="help-block">*建议提前一周至四周预约参观</p>
+        <div class="col-xs-5">
+            <img  class="img-circle" src="http://7xoom6.com1.z0.glb.clouddn.com/chateau-bishang.jpg?imageView2/1/w/150/h/150" alt="code">
+            <h4><input type="checkbox" name="caveName"  value="碧尚男爵庄园" > 碧尚男爵庄园</h4>
+            <p>评级为1855梅多克列级酒庄第二级,位于法国波尔多波亚克产区</p>
         </div>
 
+       <div class="col-xs-5">
+            <img  class="img-circle" src="http://7xoom6.com1.z0.glb.clouddn.com/wp-content%2Fuploads%2F2015%2F08%2Fbaima.jpg?imageView2/1/w/150/h/150" alt="code">
+            <h4><input type="checkbox" name="caveName"  value="波尔多五大庄" > 波尔多五大庄</h4>
+            <p>吕萨吕斯酒堡,拉斐酒庄,拉图酒庄,玛歌酒庄,奥比昂酒庄.每天参观名额有些,根据预约情况安排参观</p>
+        </div>
+        
+        <div class="col-xs-5">
+            <img  class="img-circle" src="http://7xoom6.com1.z0.glb.clouddn.com/chateau-qilin.jpg?imageView2/1/w/150/h/150" alt="code">
+            <h4><input type="checkbox" name="caveName"  value="麒麟酒庄" > 麒麟酒庄</h4>
+            <p>评级为1855梅多克评级列级酒庄第三级,位于波尔多左岸的玛歌产区内</p>
+        </div>
+
+        <div class="col-xs-5">
+            <img  class="img-circle" src="http://7xoom6.com1.z0.glb.clouddn.com/chateau-xiongshi.jpg?imageView2/1/w/150/h/150" alt="code">
+            <h4><input type="checkbox" name="caveName"  value="雄狮酒庄" > 雄狮酒庄</h4>
+            <p>一般被行家称为超二级庄,位于圣朱利安和波亚克的边缘,与一级名庄拉图庄园相连接</p>
+        </div>
+
+    </div>
+
+   <div class="tab-pane" id="tab-bordeau">
+     <div class="col-xs-5">
+            <img  class="img-circle" src="http://7xoom6.com1.z0.glb.clouddn.com/chateau-suta.jpg?imageView2/1/w/150/h/150" alt="code">
+            <h4><input type="checkbox" name="caveName"  value="苏塔酒庄" > 苏塔酒庄</h4>
+            <p>评级为列级酒庄法国波尔多圣埃美隆产区的酒庄之一</p>
+        </div>
+
+    <div class="col-xs-5">
+           <img  class="img-circle" src="http://7xoom6.com1.z0.glb.clouddn.com/chateau-jieli.jpg?imageView2/1/w/150/h/150" alt="code">
+           <h4><input type="checkbox" name="caveName"  value="嘉芙丽酒庄" > 嘉芙丽酒庄</h4>
+           <p>评级为列级名庄一级庄,位于法国波尔多右岸圣爱美容产区的中心地带</p>
+       </div>
+
+      <div class="col-xs-5">
+             <img  class="img-circle" src="http://7xoom6.com1.z0.glb.clouddn.com/chateau-bofei.jpg?imageView2/1/w/150/h/150" alt="code">
+             <h4><input type="checkbox" name="caveName"  value="柏菲酒庄" > 柏菲酒庄</h4>
+             <p>评级为列级名庄一级特等酒庄A级,位于法国波尔多右岸圣埃美隆产区</p>
+         </div>
+
+      <div class="col-xs-5">
+             <img  class="img-circle" src="http://7xoom6.com1.z0.glb.clouddn.com/chateau-feizhuo.jpg?imageView2/1/w/150/h/150" alt="code">
+             <h4><input type="checkbox" name="caveName"  value="飞卓酒庄" > 飞卓酒庄</h4>
+             <p>评级为列级名庄一级特等酒庄B级,波尔多右岸的圣爱美容产区，是波尔多地区历史最古老的酒庄之一</p>
+         </div>
+   </div>
+
+   <div class="tab-pane" id="tab-borgunde">
+
+   <div class="col-xs-5">
+          <img  class="img-circle" src="http://7xotgs.com5.z0.glb.qiniucdn.com/wp-content/uploads/2015/08/%E7%99%BD%E9%A9%AC%E5%BA%847.jpg?imageView2/1/w/150/h/150" alt="code">
+          <h4><input type="checkbox" name="caveName"  value="勃艮第特级葡萄园" > 特级葡萄园</h4>
+          <p>勃艮第葡萄酒 : 产于法国勃艮第地区的葡萄园统称</p>
+      </div>
+     <div class="col-xs-5">
+            <img  class="img-circle" src="http://7xotgs.com5.z0.glb.qiniucdn.com/wp-content/uploads/2015/09/borgen3.jpg?imageView2/1/w/150/h/150" alt="code">
+            <h4><input type="checkbox" name="caveName"  value="罗曼尼•康帝" > 罗曼尼•康帝庄</h4>
+            <p>法国最顶尖的酒园,甚至被广泛认为世界最顶级的红葡萄酒园.法国最古老的葡萄酒园之一</p>
+        </div>
+   
+  </div>
+
+   <div class="tab-pane" id="tab-champaine">
+     <div class="col-xs-5">
+           <img  class="img-circle" src="http://7xotgs.com5.z0.glb.qiniucdn.com/wp-content/uploads/2016/01/Chateau-Guiraud_800x400-150x150.jpg" alt="code">
+           <h4><input type="checkbox" name="caveName"  value="酩悦香槟酒庄" > 酩悦香槟酒庄</h4>
+           <p>位于香槟之都-美丽优雅的Epernay小镇,是法国具有代表性的香槟品牌之一</p>
+       </div>
+
+    <div class="col-xs-5">
+           <img  class="img-circle" src="http://7xotgs.com5.z0.glb.qiniucdn.com/wp-content/uploads/2016/01/Tam_Moet-800x600.jpg?imageView2/1/w/150/h/150" alt="code">
+           <h4><input type="checkbox" name="caveName"  value="香槟地区酒庄" > 香槟地区酒庄</h4>
+           <p>根据欧盟的有关规定，只有香槟产区生产的气泡葡萄酒才能称“香槟酒”，其他地区产的此类葡萄酒只能叫“气泡葡萄酒”</p>
+       </div>
+   </div>
+
+   <div class="tab-pane" id="tab-other">
+
+     <div class="col-xs-5">
+            <h4><input type="checkbox" name="caveName"  value="波尔多一级庄" > 波尔多一级庄</h4>
+       </div>
+      <div class="col-xs-5">
+              <h4><input type="checkbox" name="caveName"  value="波尔多二级庄" > 波尔多二级庄</h4>
+         </div>
+        <div class="col-xs-5">
+                <h4><input type="checkbox" name="caveName"  value="波尔多列级庄" > 波尔多列级庄</h4>
+           </div>
+          <div class="col-xs-5">
+                  <h4><input type="checkbox" name="caveName"  value="其他酒庄" > 其他酒庄</h4>
+             </div>
+
+   </div>
+</div>
 
     <div class="from-group">
           <label class="control-label"></label>
@@ -87,7 +198,8 @@
           </button>
     </div>
   </fieldset>
-    
+</div>
+</div>
 <!---second form -->
     <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -152,6 +264,7 @@
 <!---second form -->
 
   </form>
+
 <!--End form--> 
 {% endblock %}
 {% block script %}
