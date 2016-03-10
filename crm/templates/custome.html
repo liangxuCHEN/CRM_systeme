@@ -1,4 +1,14 @@
 {% extends "base_without_bar.html" %}
+{% block head %}
+<style type="text/css">
+  #form-div {
+    width: 80%;
+    left: 10%;
+    float: none;
+    margin-left: 0px;
+  }
+  </style>
+{% endblock %}
 {% block title %}Custome Form{% endblock %}
 
 {% block service %} {{service_phone}} {% endblock %}
