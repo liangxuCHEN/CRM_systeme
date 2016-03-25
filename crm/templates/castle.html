@@ -2,6 +2,11 @@
 {% block title %}Castle列表{% endblock %}
 {% block content %}
 <div class="jumbotron" id="error">
+{% if info %}
+   <div class="alert alert-info" role="alert">
+      <strong>{{ info }}</strong>
+  </div>
+{% endif %}
 {% if form.errors %}
     {% for field in form %}
         {% for error in field.errors %}

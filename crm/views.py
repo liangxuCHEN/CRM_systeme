@@ -244,6 +244,7 @@ def addCastleView(request):
             return redirect('/castle')
         else:
             content['form'] = CastleForm()
+            content['info'] = u"未能保存,请再次填写表格"
             return render(request, 'castle.html', content)
     else:
         form = CastleForm()
