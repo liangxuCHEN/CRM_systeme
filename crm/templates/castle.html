@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block title %}Castle列表{% endblock %}
+{% block content %}
+<div class="jumbotron" id="error">
+{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-error">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-error">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+</div>
+<div class="jumbotron" id="castle">
+{% if castles %}
+ <table class="table">
+   <thead>
+   <tr>
+     <form role="from" method="get" class="form-horizontal" action="/castle"  >
+       <tr>
+        <td>#</td>
+        <td><input type="submit" value="搜索" class="btn btn-primary"/></td>
+         <td><input type='text' name="name" placeholder="名字" class="form-control"  /></td>
+          <td>{{ form.city.label }}:{{ form.city }}</td>
+          <td><strong>周日开门 {{ form.open_sun }}, 周六开门 {{ form.open_sat }},{{ form.level.label }}:{{ form.level }}</strong></td>
+          <td></td>
+          <td> </td>
+        </tr>
+      </form>
+   </tr>
+     <tr><td>#</td><td>名字</td><td>官网</td><td>目的地</td><td>备注</td><td>周日开门</td><td>周六开门</td><td>预约难度</td></tr>
+   </thead>
+   <tbody>
+  {% for castle in castles %}
+      <tr>
+      <td>{{castle.id}}</td>
+      <td>{{castle.name}}</td>
+      <td>{{castle.url}}</td>
+      <td>{{castle.city}}</td>
+    <td>{{castle.comment}}</td>
+    <td>{{castle.open_sun}}</td>
+    <td>{{castle.open_sat}}</td>
+    <td>{{castle.level}}</td>
+      </tr>
+  {% endfor %}
+ </tbody>
+ </table>
+{% endif %}
+ <div class="pull-left">
+      <ul class="pagination">
+            {% if castles.has_previous %}
+                <li><a href="?page={{ castles.previous_page_number }}">prev</a></li>
+            {% endif %}
+            <script type="text/javascript">
+            for (var i=1;i<={{ castles.paginator.num_pages }};i++)
+            {
+             if (i == {{ castles.number }}) {
+                document.write("<li class='active'> <a href='?page=" + i + "'>" + i + "</a></li>");
+             } else {
+              document.write("<li> <a href='?page=" + i + "'>" + i + "</a></li>");
+             }
+            }
+            </script>
+            {% if castles.has_next %}
+               <li> <a href="?page={{ castles.next_page_number }}">next</a></li>
+            {% endif %}
+      </ul>
+  </div>
+
+ </div>
+<div class="well">
+  <div class="thumbnail">
+      <div class="caption">
+         <form action="{% url 'addCastleView' %}" method="post">{% csrf_token %}
+             <div class="col-sm-6 col-md-6">
+               <p>{{ form.name.label }} : {{ form.name }}</p>
+               <p>{{ form.url.label }} : {{ form.url }}</p>
+               <p>{{ form.city.label }} : {{ form.city }}</p>
+               <p>{{ form.open_sun.label }} : {{ form.open_sun }}</p>
+               <p>{{ form.open_sat.label }} : {{ form.open_sat }}</p>
+               <p>{{ form.level.label }} : {{ form.level }}</p>
+             </div>
+             <div class="col-sm-6 col-md-6">
+              <p>{{ form.comment.label }}</p>
+               {{ form.comment }}
+             </div>
+            <input type="submit" value="添加"  class="btn btn-primary" />
+         </form>
+      </div>
+  </div>
+</div>  
+ 
+{% endblock %}

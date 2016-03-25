@@ -7,8 +7,8 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django import forms
-from crm.forms import PersonForm, AuthenticationForm
-from crm.models import Person, Bill
+from crm.forms import PersonForm, AuthenticationForm, CastleForm
+from crm.models import Person, Bill, Castle
 from datetime import datetime, timedelta
 from tool import send_mail, check_bill_each_day,generate_booking_mail, generate_custome_mail
 # Create your views here.
@@ -199,3 +199,54 @@ def custome_travel(request):
        "service_phone" : site + u"客服 : "+ service_phone,
     }
     return render(request, "custome.html", content)
+
+def castle(request):
+    content = {}
+    castles =Castle.objects.all()
+    if  request.GET != {}:
+        name = request.GET.get('name', '')
+        city = request.GET.get("city", "")
+        open_sun = request.GET.get("open_sun", "")
+        open_sat = request.GET.get("open_sat", "")
+        level = request.GET.get("level", "")
+        if name != '':
+            castles = castles.filter(name__contains=name)
+        if city !="":
+            castles = castles.filter(city=city)
+        if level !="":
+            castles = castles.filter(level=level)
+        if open_sun !="":
+            castles = castles.filter(open_sun=open_sun)
+        if open_sat !="":
+            castles = castles.filter(open_sat=open_sat)
+
+    content["form"] = CastleForm(auto_id=False)
+    page_size =  10
+    paginator = Paginator(castles, page_size)
+    try:
+        page = int(request.GET.get('page','1'))
+    except ValueError:
+        page = 1
+    try:
+        castle_page = paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        castle_page = paginator.page(paginator.num_pages)
+
+    content["castles"] = castle_page
+    return render(request, "castle.html", content)
+
+def addCastleView(request):
+    if request.method == 'POST':
+        form = CastleForm(data=request.POST)
+        content = {}
+        if form.is_valid():
+            form.save()
+            return redirect('/castle')
+        else:
+            content['form'] = CastleForm()
+            return render(request, 'castle.html', content)
+    else:
+        form = CastleForm()
+
+    return render_to_response('castle.html', {'form': form,},
+        context_instance=RequestContext(request))
