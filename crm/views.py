@@ -165,6 +165,9 @@ def booking_cave(request):
        "from_site" : site,
        "service_phone" : site + u"客服 : "+ service_phone,
     }
+    if "Mobile" in request.META["HTTP_USER_AGENT"]:
+        return render(request, "booking_phone.html", content)
+    
     return render(request, "booking.html", content)
 
 def custome_travel(request):

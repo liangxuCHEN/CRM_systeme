@@ -45,6 +45,7 @@ def check_bill_each_day(bills):
             body += generate_bill_body(bill)
 
     mail_to = 'lchen@europely.com,reservation@europely.com'
+    #mail_to = 'lchen@europely.com'
     res = send_mail(mail_to, u"明天出行订单提醒", body)
     if not res:
         return u'<p id="info">邮件放送不成功, <a href="http://112.74.109.3:4040">请查看订单情况</a></p>'
