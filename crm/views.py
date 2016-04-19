@@ -266,4 +266,3 @@ def add_reading(request):
             return resp
     else:
          return HttpResponseRedirect('/login')
-

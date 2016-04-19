@@ -8,7 +8,7 @@
 <form method="get" action="{% url 'add_reading' %}" target="_blank">
   {% csrf_token %}
   <input type="url" placeholder="帖子网址" class="form-control" name='url' required="true"/>
-  <input type="number" placeholder="需要增加阅读量(0-1000)" class="form-control" name='num' required="true"/>
+  <input type="number" placeholder="需要增加阅读量(0-1000)" class="form-control" name='num' min="1" max="1000" required="true"/>
   <br/>
   <input type="submit" value="提交" class="btn btn-primary" />
 </form>
