@@ -4,13 +4,13 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect,render_to_response,RequestContext
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, StreamingHttpResponse
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django import forms
 from crm.forms import PersonForm, AuthenticationForm, CastleForm
 from crm.models import Person, Bill, Castle
 from datetime import datetime, timedelta
-from tool import send_mail, check_bill_each_day,generate_booking_mail, generate_custome_mail
+from tool import send_mail, check_bill_each_day,generate_booking_mail, generate_custome_mail, add_artical_reading
 # Create your views here.
 
 def home(request):
@@ -254,3 +254,16 @@ def addCastleView(request):
 
     return render_to_response('castle.html', {'form': form,},
         context_instance=RequestContext(request))
+
+def add_reading(request):
+    if request.user.is_authenticated():
+        num = request.GET.get('num')
+        url = request.GET.get('url')
+        if num==None or url==None:
+            return render(request, "script.html")
+        else:
+            resp = StreamingHttpResponse(add_artical_reading(num, url))
+            return resp
+    else:
+         return HttpResponseRedirect('/login')
+

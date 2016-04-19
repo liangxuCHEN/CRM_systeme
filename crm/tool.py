@@ -3,6 +3,7 @@
 import datetime
 import email
 import smtplib
+import httplib2
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEBase import MIMEBase
 from email.MIMEText import MIMEText
@@ -94,3 +95,12 @@ def get_list(data):
     for x in data:
         s += x + " ; "
     return s
+
+def add_artical_reading(num, url):
+    yield u"<html><body><h2>程序开始运行，需要一点时间完成，请耐心等待</h2>\n"
+    h = httplib2.Http()
+    for x in range(0,int(num)):
+        res,content = h.request(url, "GET")
+        if res['status'] == '200':
+            yield u"<p>成功增加一次浏览</p>"
+    yield u'<h2>完成,请查看帖子</h2><a href="%s">点击这里</a></body></html>\n' % url

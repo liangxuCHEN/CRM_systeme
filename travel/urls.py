@@ -31,4 +31,5 @@ urlpatterns = [
     url(r'^custome/$', views.custome_travel, name='custome_travel'),
     url(r'^castle/$', views.castle, name='castle'),
     url(r'^addCastleView/$', views.addCastleView, name="addCastleView"),
+    url(r'^add_reading/$',views.add_reading, name='add_reading'),
 ]
