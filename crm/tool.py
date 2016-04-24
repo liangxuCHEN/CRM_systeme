@@ -4,6 +4,8 @@ import datetime
 import email
 import smtplib
 import httplib2
+import logging
+import os
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEBase import MIMEBase
 from email.MIMEText import MIMEText
@@ -15,6 +17,25 @@ SMTP_SERVER = 'smtp.163.com'
 MAIL_FROM = 'chenliangxu68@163.com'
 PW = '163$323428'
 
+def log_init(model="", file_name=""):
+    today = datetime.datetime.now()
+    time_tmp = str(today).split(" ")
+    timestamp = time_tmp[0]+"_"+time_tmp[1].split(".")[0]+"_"
+    
+    if (model == "a"):
+        if not os.path.isfile("log-txt/"+file_name+".txt"):
+            model = "w"
+            file_name = timestamp + file_name
+    else:
+         model = "w"
+         file_name = timestamp + file_name
+    logging.basicConfig(
+        filename=os.path.join(os.getcwd(), "log-txt/"+file_name+".txt"),
+        level=logging.INFO,
+        filemode=model,
+        format='%(asctime)s - %(levelname)s: %(message)s'
+    )
+    return logging
 
 def send_mail(mail_to, subject, msg_txt):
     # Record the MIME types of both parts - text/plain and text/html.
@@ -97,6 +118,9 @@ def get_list(data):
     return s
 
 def add_artical_reading(num, url):
+    log = log_init(model="a", file_name="add_reading_log")
+    log.info("/******misson is  adding " + num + " time for the artical*****/")
+    log.info(url)
     yield u"<html><body><h2>程序开始运行，需要一点时间完成，请耐心等待</h2>\n"
     h = httplib2.Http()
     for x in range(0,int(num)):
@@ -104,3 +128,4 @@ def add_artical_reading(num, url):
         if res['status'] == '200':
             yield u"<p>成功增加一次浏览</p>"
     yield u'<h2>完成,请查看帖子</h2><a href="%s">点击这里</a></body></html>\n' % url
+    log.info("/*******misson is finished********/")
