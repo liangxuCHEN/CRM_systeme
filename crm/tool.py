@@ -1,21 +1,20 @@
  #-*- coding: utf-8 -*-
 #from xlwt import Workbook
 import datetime
+import email.Encoders as encoders
 import email
 import smtplib
 import httplib2
 import logging
 import os
+import settings
+import qiniu.config
+from crm.models import Person, Bill
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEBase import MIMEBase
 from email.MIMEText import MIMEText
-import email.Encoders as encoders
-from crm.models import Person, Bill
+from qiniu import Auth, put_file, etag, urlsafe_base64_encode
 from weather import get_three_days_weather
-
-SMTP_SERVER = 'smtp.163.com'
-MAIL_FROM = 'chenliangxu68@163.com'
-PW = '163$323428'
 
 def log_init(model="", file_name=""):
     today = datetime.datetime.now()
@@ -41,17 +40,17 @@ def send_mail(mail_to, subject, msg_txt):
     # Record the MIME types of both parts - text/plain and text/html.
     msg = MIMEText(msg_txt, 'html', 'utf-8')
     msg['Subject'] = subject
-    msg['From'] = MAIL_FROM
+    msg['From'] = settings.MAIL_FROM
     msg['To'] = mail_to
-    server = smtplib.SMTP(SMTP_SERVER, 25)
+    server = smtplib.SMTP(settings.SMTP_SERVER, 25)
     try:
-        server.login(MAIL_FROM, PW)
+        server.login(settings.MAIL_FROM, settings.PW)
         mailto_list = mail_to.strip().split(",")
         if len(mailto_list) > 1:
             for mailtoi in mailto_list:
-                server.sendmail(MAIL_FROM, mailtoi.strip(), msg.as_string())
+                server.sendmail(settings.MAIL_FROM, mailtoi.strip(), msg.as_string())
         else:
-            server.sendmail(MAIL_FROM, mail_to, msg.as_string())
+            server.sendmail(settings.MAIL_FROM, mail_to, msg.as_string())
     except:
         server.quit()
         return False
@@ -130,3 +129,5 @@ def add_artical_reading(num, url):
     yield u'<h2>完成,请查看帖子</h2><a href="%s">点击这里</a></body></html>\n' % url
     log.info("/*******misson is finished********/")
     log.close()
+
+#def qiniu_token(file_name):
