@@ -129,3 +129,4 @@ def add_artical_reading(num, url):
             yield u"<p>成功增加一次浏览</p>"
     yield u'<h2>完成,请查看帖子</h2><a href="%s">点击这里</a></body></html>\n' % url
     log.info("/*******misson is finished********/")
+    log.close()
