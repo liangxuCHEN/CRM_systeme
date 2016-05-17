@@ -32,4 +32,6 @@ urlpatterns = [
     url(r'^castle/$', views.castle, name='castle'),
     url(r'^addCastleView/$', views.addCastleView, name="addCastleView"),
     url(r'^add_reading/$',views.add_reading, name='add_reading'),
+    url(r'^upload_pic/$',views.upload_pic, name='upload_pic'),
+    url(r'^create_qiniu_token/$',views.create_qiniu_token, name='create_qiniu_token'),
 ]

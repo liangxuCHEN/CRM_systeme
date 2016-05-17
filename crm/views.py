@@ -4,13 +4,14 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect,render_to_response,RequestContext
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect, HttpResponse, StreamingHttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, StreamingHttpResponse, JsonResponse
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django import forms
 from crm.forms import PersonForm, AuthenticationForm, CastleForm
 from crm.models import Person, Bill, Castle
 from datetime import datetime, timedelta
-from tool import send_mail, check_bill_each_day,generate_booking_mail, generate_custome_mail, add_artical_reading
+from tool import send_mail, check_bill_each_day,generate_booking_mail, generate_custome_mail
+from tool import add_artical_reading, qiniu_token, qiniu_upload
 # Create your views here.
 
 def home(request):
@@ -266,3 +267,24 @@ def add_reading(request):
             return resp
     else:
          return HttpResponseRedirect('/login')
+
+def upload_pic(request):
+    if request.user.is_authenticated():
+        content = {}
+        if request.method == "GET":
+            token = request.GET.get('token', '')
+            if (token != ""):
+                content["token"] = token
+                content["key"] = request.GET.get('key', "")
+            return render(request, "upload_pic.html", content)
+        if request.method == "POST":
+            data = request.POST
+            input_file = request.FILES['file']
+            content["info"] = qiniu_upload(data["token"], data["key"], input_file.read()) 
+            return render(request, "upload_pic.html", content)
+
+def create_qiniu_token(request):
+    if request.user.is_authenticated():
+         if request.method == "GET":
+            key = request.GET.get('key')
+            return  JsonResponse(qiniu_token(key))

@@ -13,6 +13,7 @@ from crm.models import Person, Bill
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEBase import MIMEBase
 from email.MIMEText import MIMEText
+from random import Random
 from qiniu import Auth, put_file, etag, urlsafe_base64_encode
 from weather import get_three_days_weather
 
@@ -130,4 +131,35 @@ def add_artical_reading(num, url):
     log.info("/*******misson is finished********/")
     log.close()
 
-#def qiniu_token(file_name):
+def qiniu_token(file_name):
+    #需要填写你的 Access Key 和 Secret Key
+    access_key = settings.QINIU_AK
+    secret_key = settings.QINIU_SK
+    #构建鉴权对象
+    q = Auth(access_key, secret_key)
+    #要上传的空间
+    bucket_name = 'love-travel'
+    #上传到七牛后保存的文件名
+    key = random_str(2) + "_" + file_name.encode("utf-8")
+    #生成上传 Token，可以指定过期时间等
+    token = q.upload_token(bucket_name, key, 3600)
+    return {"token" : token, "key" : key}
+
+def qiniu_upload(token, key, pic):
+    #res = qiniu_token(file_name)
+    ret, info  = put_file(token, key, pic)
+    if  ret['key'] == key:
+        return {"result" : True, "file_name" :  key}
+    else:
+        return {"result" : False, "file_name" :  ""}
+
+def random_str(randomlength=5):
+    file_name = ''
+    chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789'
+    length = len(chars) - 1
+    random = Random()
+    for i in range(randomlength):
+        file_name+=chars[random.randint(0, length)]
+    today = datetime.datetime.now()
+    file_name = file_name+str(today).split(" ")[0]
+    return file_name

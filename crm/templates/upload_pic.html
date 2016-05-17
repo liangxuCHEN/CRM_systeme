@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+<div class="alert alert-success" role="alert" id="info"></div>	
+</div>
+<div class="jumbotron">
+<form method="post" action="http://up.qiniu.com" enctype="multipart/form-data" id="upload">
+  {% csrf_token %}
+  <label>第一步: 选择文件</label>
+  <input type="file" name="file" id="file" onfocus="getName(this.value)"/>
+  <br/>
+   <label for="key">第二步 : 修改图片名字并点击取得权限</label>
+  <input type="hidden" name="token" id="token"  value="" />
+  <input type="text" class="form-control" name='key' id="key" required="true"/>
+   <p></p>
+   <label>第三步 : </label>
+   <p></p>
+  <input type="submit" value="提交" class="btn btn-primary" id="send" disabled="True" />
+  <p></p>
+</form>
+
+<button id="getToken" >取得权限</button>
+
+</div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+function getName(file_name) {
+    l = file_name.split("\\");
+    file_name = l[l.length- 1];
+    $("#key").val(file_name);
+}
+
+$(document).ready(function () {
+  
+  $("#getToken").click(function () {
+    $.getJSON("/create_qiniu_token", {"key": $("#key").val()}, function(result) {
+        $("#token").val(result["token"]);
+        $("#key").val(result["key"]);
+        $("#send").attr("disabled", false);
+        $("#postPic").attr("hidden", false);
+      });
+  });
+
+    $("#upload").on("submit", function(e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+        $.ajax({
+        	url: "http://up.qiniu.com",
+        	type: "POST",
+        	data: formData,
+        	cache: false,
+        	contentType: false,
+        	processData: false, 
+        	success: function (data) {
+                   $("#info").html(" 成功，图片名字为：" + data["key"]);
+        	},
+        	erro: function(jXHR, textStatus, errorThrown) {
+        	   $("#info").html(errorThrown);
+        	   s("#info").attr("class", "alert alert-danger")
+        	}
+        });
+    });
+
+});
+</script>
+{% endblock %}
