@@ -14,7 +14,7 @@ from email.MIMEMultipart import MIMEMultipart
 from email.MIMEBase import MIMEBase
 from email.MIMEText import MIMEText
 from random import Random
-from qiniu import Auth, put_file, etag, urlsafe_base64_encode
+from qiniu import Auth, put_file, etag, urlsafe_base64_encode, BucketManager
 from weather import get_three_days_weather
 
 def log_init(model="", file_name=""):
@@ -132,15 +132,12 @@ def add_artical_reading(num, url):
     log.close()
 
 def qiniu_token(file_name):
-    #需要填写你的 Access Key 和 Secret Key
-    access_key = settings.QINIU_AK
-    secret_key = settings.QINIU_SK
     #构建鉴权对象
-    q = Auth(access_key, secret_key)
+    q = qiniu_q()
     #要上传的空间
     bucket_name = 'love-travel'
     #上传到七牛后保存的文件名
-    key = random_str(2) + "_" + file_name.encode("utf-8")
+    key =  file_name.encode("utf-8")
     #生成上传 Token，可以指定过期时间等
     token = q.upload_token(bucket_name, key, 3600)
     return {"token" : token, "key" : key}
@@ -153,6 +150,34 @@ def qiniu_upload(token, key, pic):
     else:
         return {"result" : False, "file_name" :  ""}
 
+def qiniu_download(data):
+    #构建鉴权对象
+    q = qiniu_q()
+    #上传的空间
+    bucket_domain = settings.BUCKET_DOMAIN
+    # generate key
+    if data["url"] == "diy_url":
+        logo_url = urlsafe_base64_encode(data["diy_url"])
+    else:
+        logo_url = urlsafe_base64_encode(data["url"])
+   
+    key ="?watermark/1/image/%s/dissolve/%d/gravity/%s/dx/30/dy/30" % (
+        logo_url,
+        int(data["dissolve"]),
+        data["place"],
+    )
+    key = data["key"]+key
+    #有两种方式构造base_url的形式
+    base_url = 'http://%s/%s' % (bucket_domain, key)
+    #可以设置token过期时间
+    private_url = q.private_download_url(base_url, expires=3600)
+    h = httplib2.Http()
+    res,content = h.request(private_url, "GET")
+    if res['status'] == '200':
+        return {"result" : True, "private_url" : private_url }
+    else:
+        return {"result" : False, "private_url" : "" }
+
 def random_str(randomlength=5):
     file_name = ''
     chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789'
@@ -163,3 +188,22 @@ def random_str(randomlength=5):
     today = datetime.datetime.now()
     file_name = file_name+str(today).split(" ")[0]
     return file_name
+
+def qiniu_q():
+    #需要填写你的 Access Key 和 Secret Key
+    access_key = settings.QINIU_AK
+    secret_key = settings.QINIU_SK
+    #构建鉴权对象
+    return Auth(access_key, secret_key)
+
+def qiniu_file(pre_text, limit):
+    #构建鉴权对象
+    q = qiniu_q()
+    bucket = BucketManager(q)
+    #你要测试的空间， 并且这个key在你空间中存在
+    bucket_name = 'love-travel'
+    ret, eof, info = bucket.list(bucket_name, prefix=pre_text, delimiter="/", limit=limit)
+    if len(ret["items"]) > 0 :
+        return {'result' : True, 'files' : ret["items"]}
+    else:
+        return {'result' : False}

@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% block title %}制作水印 {% endblock %}
+{% block content %}
+<div class="jumbotron"></div>
+{% if info %}
+<div class="Jumbotron">
+   {% if info.result %}
+       <div class="alert alert-success" role="alert" >成功，请尽快下载到您的电脑 </div>
+       <img src="{{ info.private_url }}" >
+       <br/><a href="{% url 'download_pic' %}" ><button type="button" class="btn btn-primary">重新制作</button></a>
+   {% else %}
+       <div class="alert alert-danger" role="alert" >失败 </div>
+       <br/>
+       <a href="{% url 'download_pic' %}" ><button type="button" class="btn btn-primary">重新制作</button></a>
+   {% endif %}
+</div>
+{% else %}
+
+<div class="jumbotron"  id="edit">
+ <form method="post" accept="{% url 'download_pic' %}" >
+     {% csrf_token %}
+     <fieldset>
+     <div class="control-group">
+     <label for="key"> 第一步: 输入文件名 例如： image/jpg/your-file-name.jpg</label>
+      <input type="text" class="form-control" name='key' id="key" required="true"/>
+      <br/>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        忘记名字,查找文件
+      </button>
+      <a href="{% url 'upload_pic'%}" class="btn btn-primary" target="_blank">上传新照片</a>
+      </div>
+     <br/>
+     
+     <label for="model"> 第二步: 选择模式 </label>
+      <div class="control-group">
+      <label >水印选择</label>
+      <!-- Multiple Radios -->
+      <label class="radio"> <input type="radio" value="http://7xoom6.com5.z0.glb.qiniucdn.com/logo-logo_piaoling.png" name="url" checked="checked"> 飘零 </label>
+      <img src="http://7xoom6.com5.z0.glb.qiniucdn.com/logo-logo_piaoling.png"  />
+      <label class="radio"><input type="radio" value="http://7xoom6.com5.z0.glb.qiniucdn.com/wp-content/uploads/2015/03/europely_logo_22.fw1_.png" name="url"> 环欧洲  </label>
+      <img src="http://7xoom6.com5.z0.glb.qiniucdn.com/wp-content/uploads/2015/03/europely_logo_22.fw1_.png"  />
+       <label class="radio"> <input type="radio" value="http://7xoom6.com5.z0.glb.qiniucdn.com/logo-LOGO3%20%282%29.png" name="url"> 南法 </label>
+       <img src="http://7xoom6.com5.z0.glb.qiniucdn.com/logo-LOGO3%20%282%29.png"  />
+       <label class="radio"> <input type="radio"  name="url" value="diy_url">自定义图片  </label>
+        <input type="text"  name="diy_url" class="form-control"> 
+     </div>
+     <br/>
+
+     <div class="control-group">
+       <label class="control-label">水印位置</label>
+      <!-- Inline Radios -->
+      <label class="radio-inline">
+        <input type="radio" value="NorthWest" name="place" checked="checked">
+        左上方
+      </label>
+      <label class="radio-inline">
+        <input type="radio" value="SouthWest" name="place">
+        左下方
+      </label>
+      <label class="radio-inline">
+        <input type="radio" value="NorthEast" name="place">
+        右上方
+      </label>
+      <label class="radio-inline">
+        <input type="radio" value="SouthEast" name="place">
+        右下方
+      </label>
+    </div>
+      <div class="control-group">
+      	<label class="control-label">透明度 : <input type="number" min="0" max="100"  name="dissolve" value="100"></label>
+      	<p class="help-block">透明度，取值范围1-100，默认值为100（完全不透明）</p>
+      </div>
+    </fieldset>
+     <input type="submit" value="生成图片" class="btn btn-primary"   />
+ </form>
+
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">查找文件</h4>
+      </div>
+      <div class="modal-body">
+      <div class="control-group">
+        <label>输入文件夹名 例如： image/jpg/</label>
+        <input type="text" name="pre_text" id ="pre_text"  class="form-control">
+        </div>
+        <p></p>
+        <div class="control-group">
+        <label>返回文件数量 : </label>
+        <input type="number" name="limit" id ="limit" min="1"  value="2">
+        </div>
+        <button class="btn btn-primary"  onclick="getfile()">查找</button>
+        <p id="show_file"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+    function getfile() {
+    var pre_text = $("#pre_text").val();
+    var limit = $("#limit").val();
+    if (pre_text == "" ) {
+       $("#show_file").append('<li class="alert alert-danger" role="alert" id="info">文件夹名字不能为空</li>')
+    } else {
+       //return file 
+        $.getJSON("/get_qiniu_file", {"pre_text": pre_text , "limit" : limit }, function(res) {
+            if (res["result"]) {
+            	var text = "<p>返回结果</p><ul>"
+            	for (var i = res["files"].length - 1; i >= 0; i--) {
+            	    text = text + "<li>" + res["files"][i]["key"] + "</li>";
+            	};
+             text = text + "</ul>";
+             $("#show_file").append(text);
+            } else {
+            	var text = '<li class="alert alert-danger" > 没有找到 , <a href="/upload_pic" target="_blank" >上传新图片</a> </li>';
+	$("#show_file").append(text);
+            }
+          });
+       }
+}
+</script>
+{% endblock %}

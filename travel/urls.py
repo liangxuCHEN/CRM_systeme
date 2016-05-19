@@ -34,4 +34,6 @@ urlpatterns = [
     url(r'^add_reading/$',views.add_reading, name='add_reading'),
     url(r'^upload_pic/$',views.upload_pic, name='upload_pic'),
     url(r'^create_qiniu_token/$',views.create_qiniu_token, name='create_qiniu_token'),
+    url(r'^download_pic/$',views.download_pic, name='download_pic'),
+    url(r'^get_qiniu_file/$',views.get_qiniu_file, name='get_qiniu_file'),
 ]

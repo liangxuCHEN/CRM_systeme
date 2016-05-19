@@ -11,7 +11,7 @@ from crm.forms import PersonForm, AuthenticationForm, CastleForm
 from crm.models import Person, Bill, Castle
 from datetime import datetime, timedelta
 from tool import send_mail, check_bill_each_day,generate_booking_mail, generate_custome_mail
-from tool import add_artical_reading, qiniu_token, qiniu_upload
+from tool import add_artical_reading, qiniu_token, qiniu_upload, qiniu_download, qiniu_file
 # Create your views here.
 
 def home(request):
@@ -277,14 +277,26 @@ def upload_pic(request):
                 content["token"] = token
                 content["key"] = request.GET.get('key', "")
             return render(request, "upload_pic.html", content)
+ 
+def download_pic(request):
+    if request.user.is_authenticated():
         if request.method == "POST":
             data = request.POST
-            input_file = request.FILES['file']
-            content["info"] = qiniu_upload(data["token"], data["key"], input_file.read()) 
-            return render(request, "upload_pic.html", content)
+            content = {}
+            content["info"] = qiniu_download(data)
+            return  render(request, "download_pic.html", content)
+        if request.method == "GET":
+            return  render(request, "download_pic.html")
 
 def create_qiniu_token(request):
     if request.user.is_authenticated():
          if request.method == "GET":
             key = request.GET.get('key')
             return  JsonResponse(qiniu_token(key))
+
+def get_qiniu_file(request):
+    if request.user.is_authenticated():
+         if request.method == "GET":
+            pre_text = request.GET.get('pre_text')
+            limit = request.GET.get('limit')
+            return  JsonResponse(qiniu_file(pre_text,limit))
