@@ -161,7 +161,11 @@ def qiniu_download(data):
     else:
         logo_url = urlsafe_base64_encode(data["url"])
    
-    key ="?watermark/1/image/%s/dissolve/%d/gravity/%s/dx/30/dy/30" % (
+    key ="?imageView2/1/w/%d/h/%d/q/%d/format/%s|watermark/1/image/%s/dissolve/%d/gravity/%s/dx/30/dy/30" % (
+        int(data["width"]),
+        int(data["height"]),
+        int(data["quality"]),
+        data['format'],
         logo_url,
         int(data["dissolve"]),
         data["place"],
@@ -197,10 +201,8 @@ def qiniu_q():
     return Auth(access_key, secret_key)
 
 def qiniu_file(pre_text, limit):
-    #构建鉴权对象
     q = qiniu_q()
     bucket = BucketManager(q)
-    #你要测试的空间， 并且这个key在你空间中存在
     bucket_name = 'love-travel'
     ret, eof, info = bucket.list(bucket_name, prefix=pre_text, delimiter="/", limit=limit)
     if len(ret["items"]) > 0 :

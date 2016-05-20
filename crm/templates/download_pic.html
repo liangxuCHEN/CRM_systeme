@@ -7,7 +7,7 @@
    {% if info.result %}
        <div class="alert alert-success" role="alert" >成功，请尽快下载到您的电脑 </div>
        <img src="{{ info.private_url }}" >
-       <br/><a href="{% url 'download_pic' %}" ><button type="button" class="btn btn-primary">重新制作</button></a>
+       <P><a href="{% url 'download_pic' %}" ><button type="button" class="btn btn-primary">重新制作</button></a></P>
    {% else %}
        <div class="alert alert-danger" role="alert" >失败 </div>
        <br/>
@@ -42,8 +42,8 @@
       <img src="http://7xoom6.com5.z0.glb.qiniucdn.com/wp-content/uploads/2015/03/europely_logo_22.fw1_.png"  />
        <label class="radio"> <input type="radio" value="http://7xoom6.com5.z0.glb.qiniucdn.com/logo-LOGO3%20%282%29.png" name="url"> 南法 </label>
        <img src="http://7xoom6.com5.z0.glb.qiniucdn.com/logo-LOGO3%20%282%29.png"  />
-       <label class="radio"> <input type="radio"  name="url" value="diy_url">自定义图片  </label>
-        <input type="text"  name="diy_url" class="form-control"> 
+       <label class="radio"> <input type="radio"  name="url" value="diy_url">自定义水印图片(输入图片URL) </label>
+        <input type="text"  name="diy_url" class="form-control" placeholder="http://www.europely.com/1.jpg"> 
      </div>
      <br/>
 
@@ -67,14 +67,38 @@
         右下方
       </label>
     </div>
+     <div class="control-group">
+        <label class="control-label">水印透明度 : <input type="number" min="0" max="100"  name="dissolve" value="100"></label>
+        <p class="help-block">透明度，取值范围1-100，默认值为100（完全不透明）</p>
+      </div>
+
+    <label for="model"> 第三步: 选择图片属性 </label>
+    <div class="control-group">
+        <label class="radion-inline">图片宽度(w) : <input type="number" min="200" max="1920"  name="width" value="800"></label>
+        <label class="radion-inline">图片高度(h) : <input type="number" min="100" max="1920"  name="height" value="533"></label>
+        <p class="help-block">限定缩略图的宽最少为[w]，高最少为[h]，进行等比缩放，居中裁剪。转后的缩略图通常恰好是 [w]x[h] 的大小（有一个边缩放的时候会因为超出矩形框而被裁剪掉多余部分）</p>
+      </div>
+    
+    <div class="control-group">
+        <label class="control-label">图片质量 : <input type="number" min="0" max="100"  name="quality" value="100"></label>
+        <p class="help-block">图片质量，取值范围1-100，默认值为100（无损输出）</p>
+      </div>
+
       <div class="control-group">
-      	<label class="control-label">透明度 : <input type="number" min="0" max="100"  name="dissolve" value="100"></label>
-      	<p class="help-block">透明度，取值范围1-100，默认值为100（完全不透明）</p>
+        <label class="control-label">图片输出格式 : </label>
+        <label class="radio-inline">
+        <input type="radio" value="jpg" name="format" checked="checked">
+        jpg
+      </label>
+      <label class="radio-inline">
+      <input type="radio" value="png" name="place">
+        png
+      </label>
+        <p class="help-block">如果图片有透明部分，请选择png格式</p>
       </div>
     </fieldset>
      <input type="submit" value="生成图片" class="btn btn-primary"   />
  </form>
-
 </div>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
