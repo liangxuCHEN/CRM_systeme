@@ -2769,3 +2769,503 @@ KeyError: 'HTTP_USER_AGENT'
 2016-07-12 08:30:43,578 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
 2016-07-12 08:36:24,033 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
 2016-07-12 08:48:33,910 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-12 09:30:34,478 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-12 10:36:14,376 - WARNING: Not Found: /robots.txt
+2016-07-12 11:39:27,600 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-12 14:01:20,646 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-12 20:36:16,482 - ERROR: Internal Server Error: /booking_cave/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/my_app/crm/views.py", line 169, in booking_cave
+    if "Mobile" in request.META["HTTP_USER_AGENT"]:
+KeyError: 'HTTP_USER_AGENT'
+2016-07-12 22:15:57,584 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-13 02:00:28,392 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-13 02:07:10,693 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-13 02:29:31,840 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-13 02:38:58,495 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-13 04:08:36,180 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-13 05:32:19,441 - WARNING: Not Found: /favicon.ico
+2016-07-13 05:32:19,506 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-13 05:32:29,439 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-13 05:32:31,194 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-13 06:08:17,842 - WARNING: Not Found: /favicon.ico
+2016-07-13 06:28:39,155 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-13 06:28:41,015 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-13 06:28:42,982 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-13 07:44:20,207 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 07:44:23,398 - WARNING: Not Found: /login.jsp
+2016-07-13 07:44:29,615 - WARNING: Not Found: /index.html
+2016-07-13 07:44:31,565 - WARNING: Not Found: /server-status/
+2016-07-13 07:44:39,478 - WARNING: Not Found: /zabbix/
+2016-07-13 07:44:47,592 - WARNING: Not Found: /cacti/index.php
+2016-07-13 07:44:49,717 - WARNING: Not Found: /index.php
+2016-07-13 07:44:53,551 - WARNING: Not Found: /axis2/
+2016-07-13 07:45:01,659 - WARNING: Not Found: /solr/
+2016-07-13 07:45:11,481 - WARNING: Not Found: /hudson/
+2016-07-13 07:45:21,568 - WARNING: Not Found: /phpRedisAdmin/
+2016-07-13 07:45:23,607 - WARNING: Not Found: /custome/.DS_Store
+2016-07-13 07:45:25,703 - WARNING: Not Found: /custome/.svn/entries
+2016-07-13 07:45:27,643 - WARNING: Not Found: /.svn/entries
+2016-07-13 07:45:29,662 - WARNING: Not Found: /custome/.git/config
+2016-07-13 07:45:31,447 - WARNING: Not Found: /.git/config
+2016-07-13 07:45:33,496 - WARNING: Not Found: /examples/servlets/index.html
+2016-07-13 07:45:37,599 - WARNING: Not Found: /examples/jsp/index.html
+2016-07-13 07:45:41,735 - WARNING: Not Found: /monitor/WEB-INF/web.xml
+2016-07-13 07:45:43,653 - WARNING: Not Found: /WEB-INF/web.xml
+2016-07-13 07:45:45,605 - WARNING: Not Found: /custome/.htaccess
+2016-07-13 07:45:47,467 - WARNING: Not Found: /.htaccess
+2016-07-13 07:45:59,960 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 07:46:07,113 - WARNING: Not Found: /jenkins/
+2016-07-13 07:46:17,029 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 07:46:20,361 - WARNING: Not Found: /custome/bin/
+2016-07-13 07:46:22,762 - WARNING: Not Found: /bin/
+2016-07-13 07:46:24,605 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 07:46:28,694 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 07:46:32,625 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 07:46:34,752 - WARNING: Not Found: /custome//aa=com.opensymphony.xwork2.dispatcher.HttpServletResponse&method:(#_memberAccess).setExcludedClasses(@java.util.Collections@EMPTY_SET),(#_memberAccess).setExcludedPackageNamePatterns(@java.util.Collections@EMPTY_SET),#a=#context.get(#parameters.aa[0]).getWriter(),#a.print(0x31323334),#a.close(),new java.lang.String
+2016-07-13 07:46:38,748 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 07:46:40,706 - WARNING: Not Found: /custome/index.php
+2016-07-13 07:46:44,662 - WARNING: Not Found: /index.php
+2016-07-13 07:46:48,616 - WARNING: Not Found: /custome/phpsysinfo/index.php
+2016-07-13 07:46:50,589 - WARNING: Not Found: /phpsysinfo/index.php
+2016-07-13 07:46:52,655 - WARNING: Not Found: /www/admin/index.php
+2016-07-13 07:46:58,575 - WARNING: Not Found: /custome/.bzr/branch-format
+2016-07-13 07:47:00,692 - WARNING: Not Found: /.bzr/branch-format
+2016-07-13 07:47:04,496 - WARNING: Not Found: /custome/.hg/requires
+2016-07-13 07:47:06,635 - WARNING: Not Found: /.hg/requires
+2016-07-13 07:47:08,619 - WARNING: Not Found: /custome/CVS/Root
+2016-07-13 07:47:14,686 - WARNING: Not Found: /CVS/Root
+2016-07-13 07:47:16,569 - WARNING: Not Found: /uc_server/uctools.php
+2016-07-13 07:47:18,693 - WARNING: Not Found: /custome/uc_server/uctools.php
+2016-07-13 07:47:34,638 - WARNING: Not Found: /custome/download/
+2016-07-13 07:47:36,434 - WARNING: Not Found: /download/
+2016-07-13 07:47:38,634 - WARNING: Not Found: /custome/downloads/
+2016-07-13 07:47:40,742 - WARNING: Not Found: /downloads/
+2016-07-13 07:47:44,692 - WARNING: Not Found: /index.php
+2016-07-13 07:47:46,622 - WARNING: Not Found: /custome/upfile/
+2016-07-13 07:47:48,759 - WARNING: Not Found: /upfile/
+2016-07-13 07:47:52,736 - WARNING: Not Found: /custome/uploadfile/
+2016-07-13 07:47:54,598 - WARNING: Not Found: /uploadfile/
+2016-07-13 07:48:07,726 - WARNING: Not Found: /custome/uploadfiles/
+2016-07-13 07:48:12,307 - WARNING: Not Found: /uploadfiles/
+2016-07-13 07:48:13,624 - WARNING: Not Found: /custome/web/
+2016-07-13 07:48:14,561 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 07:48:16,236 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 07:48:16,530 - WARNING: Not Found: /web/
+2016-07-13 07:48:19,024 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 07:48:22,238 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 07:48:38,124 - WARNING: Not Found: /custome/data/
+2016-07-13 07:48:40,431 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 07:48:47,009 - WARNING: Not Found: /data/
+2016-07-13 07:48:49,656 - WARNING: Not Found: /custome/backup/
+2016-07-13 07:48:50,590 - WARNING: Not Found: /backup/
+2016-07-13 07:48:51,764 - WARNING: Not Found: /custome/uploads/
+2016-07-13 07:48:52,666 - WARNING: Not Found: /uploads/
+2016-07-13 07:48:53,492 - WARNING: Not Found: /custome/upload/
+2016-07-13 07:48:54,604 - WARNING: Not Found: /upload/
+2016-07-13 07:48:55,686 - WARNING: Not Found: /custome/db/
+2016-07-13 07:48:56,714 - WARNING: Not Found: /db/
+2016-07-13 07:48:59,608 - WARNING: Not Found: /custome/config/
+2016-07-13 07:49:00,624 - WARNING: Not Found: /config/
+2016-07-13 07:49:01,653 - WARNING: Not Found: /custome/logs/
+2016-07-13 07:49:03,716 - WARNING: Not Found: /logs/
+2016-07-13 07:49:06,574 - WARNING: Not Found: /custome/log/
+2016-07-13 07:49:08,551 - WARNING: Not Found: /log/
+2016-07-13 07:49:12,644 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 07:49:20,523 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 07:49:22,672 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 07:49:24,627 - WARNING: Not Found: /custome/index.action
+2016-07-13 07:49:28,524 - WARNING: Not Found: /custome/login.action
+2016-07-13 07:49:34,534 - WARNING: Not Found: /custome/admin.action
+2016-07-13 07:49:36,758 - WARNING: Not Found: /index.action
+2016-07-13 07:49:42,605 - WARNING: Not Found: /login.action
+2016-07-13 07:49:44,621 - WARNING: Not Found: /admin.action
+2016-07-13 07:49:46,745 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 07:49:54,572 - WARNING: Not Found: /custome/upfiles/
+2016-07-13 07:49:56,036 - WARNING: Not Found: /upfiles/
+2016-07-13 07:49:57,695 - WARNING: Not Found: /index.php
+2016-07-13 07:50:02,392 - WARNING: Not Found: /cgi-bin/authlogin.cgi
+2016-07-13 07:50:04,651 - WARNING: Not Found: /cgi-bin/it.cgi
+2016-07-13 07:50:05,783 - WARNING: Not Found: /cgi-bin/test-cgi
+2016-07-13 07:50:06,711 - WARNING: Not Found: /cgi-sys/defaultwebpage.cgi
+2016-07-13 07:50:07,839 - WARNING: Not Found: /cgi-sys/FormMail-clone.cgi
+2016-07-13 07:50:08,154 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 07:50:21,648 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 07:50:23,034 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 07:50:24,029 - WARNING: Not Found: /xampp/cgi.cgi
+2016-07-13 07:50:26,085 - WARNING: Not Found: /custome/bigdump.php
+2016-07-13 07:50:28,021 - WARNING: Not Found: /custome/adminer.php
+2016-07-13 07:50:30,118 - WARNING: Not Found: /adminer.php
+2016-07-13 07:50:34,024 - WARNING: Not Found: /custome/phpinfo.php
+2016-07-13 07:50:36,065 - WARNING: Not Found: /custome/info.php
+2016-07-13 07:50:38,036 - WARNING: Not Found: /custome/php.php
+2016-07-13 07:50:40,090 - WARNING: Not Found: /custome/test.php
+2016-07-13 07:50:42,012 - WARNING: Not Found: /custome/show.php
+2016-07-13 07:50:44,141 - WARNING: Not Found: /custome/index.php
+2016-07-13 07:50:46,050 - WARNING: Not Found: /custome/a.php
+2016-07-13 07:50:47,399 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 07:50:48,083 - WARNING: Not Found: /custome/1.php
+2016-07-13 07:50:50,069 - WARNING: Not Found: /custome/u.php
+2016-07-13 07:50:52,047 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 07:50:54,121 - WARNING: Not Found: /custome/l.php
+2016-07-13 07:50:56,075 - WARNING: Not Found: /custome/tz.php
+2016-07-13 07:50:58,086 - WARNING: Not Found: /custome/app/dev/svinfo.php
+2016-07-13 07:51:02,055 - WARNING: Not Found: /custome/install/svinfo.php
+2016-07-13 07:51:04,055 - WARNING: Not Found: /custome/htdocs/
+2016-07-13 07:51:06,040 - WARNING: Not Found: /htdocs/
+2016-07-13 08:00:52,968 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 08:00:55,649 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 08:00:59,446 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 08:01:03,275 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 08:02:45,040 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 08:02:58,136 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 08:03:01,664 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 08:03:16,486 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-13 08:04:30,099 - WARNING: Not Found: /custome//
+2016-07-13 08:04:35,220 - WARNING: Not Found: /WebResource.axd
+2016-07-13 08:04:37,733 - WARNING: Not Found: /WebResource.axd
+2016-07-13 08:04:40,092 - WARNING: Not Found: /jmx-console/
+2016-07-13 08:04:41,450 - WARNING: Not Found: /web-console/
+2016-07-13 08:04:48,684 - WARNING: Not Found: /robots.txt
+2016-07-13 08:05:26,963 - WARNING: Not Found: /favicon.ico
+2016-07-13 09:53:54,543 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-13 10:48:14,538 - WARNING: Not Found: /robots.txt
+2016-07-13 12:38:28,928 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-13 13:02:34,496 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-13 13:02:34,562 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-13 13:02:34,602 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-13 16:22:11,225 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-13 16:25:07,180 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-13 16:31:07,204 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-13 16:31:20,601 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-13 19:35:24,292 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-13 19:47:33,138 - WARNING: Not Found: /favicon.ico
+2016-07-13 19:47:33,516 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-14 01:19:01,396 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-14 02:20:34,651 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-14 02:21:45,589 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-14 04:25:21,479 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-14 06:48:48,391 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-14 07:00:09,125 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-14 07:41:05,813 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-14 07:41:52,820 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-14 07:50:17,484 - WARNING: Not Found: /jenkins/
+2016-07-14 07:50:38,965 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-14 07:55:30,435 - WARNING: Not Found: /login.jsp
+2016-07-14 07:55:49,491 - WARNING: Not Found: /index.html
+2016-07-14 07:55:51,482 - WARNING: Not Found: /server-status/
+2016-07-14 07:56:23,525 - WARNING: Not Found: /zabbix/
+2016-07-14 07:57:03,076 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-14 07:57:07,284 - WARNING: Not Found: /cacti/index.php
+2016-07-14 07:57:10,910 - WARNING: Not Found: /index.php
+2016-07-14 07:57:19,609 - WARNING: Not Found: /axis2/
+2016-07-14 07:57:31,566 - WARNING: Not Found: /solr/
+2016-07-14 07:58:07,276 - WARNING: Not Found: /phpRedisAdmin/
+2016-07-14 07:58:07,908 - WARNING: Not Found: /custome/.DS_Store
+2016-07-14 07:58:16,941 - WARNING: Not Found: /custome/.svn/entries
+2016-07-14 07:58:18,437 - WARNING: Not Found: /.svn/entries
+2016-07-14 07:58:20,005 - WARNING: Not Found: /custome/.git/config
+2016-07-14 07:58:24,474 - WARNING: Not Found: /.git/config
+2016-07-14 07:58:25,957 - WARNING: Not Found: /examples/servlets/index.html
+2016-07-14 07:58:31,991 - WARNING: Not Found: /examples/jsp/index.html
+2016-07-14 07:58:43,860 - WARNING: Not Found: /monitor/WEB-INF/web.xml
+2016-07-14 07:58:45,358 - WARNING: Not Found: /WEB-INF/web.xml
+2016-07-14 07:58:46,890 - WARNING: Not Found: /custome/bin/
+2016-07-14 07:58:52,995 - WARNING: Not Found: /bin/
+2016-07-14 07:58:54,492 - WARNING: Not Found: /custome/downloads/
+2016-07-14 07:58:57,483 - WARNING: Not Found: /downloads/
+2016-07-14 08:00:44,014 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-14 08:00:45,507 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-14 08:00:48,414 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-14 08:00:49,910 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-14 08:03:57,893 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-14 08:08:29,375 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-14 08:10:12,086 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-14 10:48:57,973 - WARNING: Not Found: /assets/js/ie8-responsive-file-warning.js
+2016-07-14 11:09:21,080 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-14 11:21:56,030 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-14 11:37:51,757 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-14 16:00:06,223 - WARNING: Not Found: /robots.txt
+2016-07-14 17:13:50,781 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-14 17:44:34,217 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-15 04:41:24,899 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-15 07:11:19,291 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-15 07:15:35,590 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-15 07:15:38,919 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-15 08:09:27,160 - WARNING: Not Found: /favicon.ico
+2016-07-15 08:09:27,716 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-15 08:34:14,433 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-15 09:19:19,101 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-15 09:21:28,150 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-15 09:53:04,892 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-15 09:54:40,019 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-15 09:55:08,581 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-15 09:59:22,076 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-15 11:01:03,089 - WARNING: Not Found: /robots.txt
+2016-07-15 13:01:16,513 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-15 13:01:16,714 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-15 13:01:16,733 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-15 14:14:25,188 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-15 17:01:01,023 - WARNING: Not Found: /robots.txt
+2016-07-15 17:01:01,612 - WARNING: Not Found: /sitemap.xml
+2016-07-16 04:07:40,376 - WARNING: Not Found: /favicon.ico
+2016-07-16 04:07:40,581 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-16 15:18:55,514 - WARNING: Not Found: /assets/js/ie8-responsive-file-warning.js
+2016-07-16 16:57:02,959 - WARNING: Not Found: /assets/js/ie8-responsive-file-warning.js
+2016-07-16 20:47:41,419 - WARNING: Not Found: /favicon.ico
+2016-07-16 20:47:41,440 - WARNING: Not Found: /apple-touch-icon-precomposed.png
+2016-07-16 20:47:41,989 - WARNING: Not Found: /apple-touch-icon.png
+2016-07-16 20:47:43,788 - WARNING: Not Found: /apple-touch-icon-precomposed.png
+2016-07-16 20:47:44,403 - WARNING: Not Found: /apple-touch-icon.png
+2016-07-16 22:56:01,436 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 03:51:12,747 - WARNING: Not Found: /favicon.ico
+2016-07-17 03:51:13,540 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 03:51:16,255 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 03:51:18,009 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 03:51:20,275 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 03:51:43,668 - WARNING: Not Found: /create_qiniu_token
+2016-07-17 03:51:46,280 - WARNING: Not Found: /download_pic
+2016-07-17 03:51:46,488 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 03:52:19,172 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 03:55:10,821 - WARNING: Not Found: /create_qiniu_token
+2016-07-17 03:55:14,293 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 03:55:37,025 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 07:14:31,486 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 07:20:41,956 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 07:20:43,429 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 07:20:44,564 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 07:20:57,945 - WARNING: Not Found: /create_qiniu_token
+2016-07-17 07:21:46,989 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 07:23:32,074 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 07:40:37,968 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 07:41:25,998 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 07:45:24,233 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 07:56:20,518 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 08:55:52,595 - WARNING: Forbidden (CSRF cookie not set.): /booking_cave/
+2016-07-17 08:56:43,349 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 08:59:01,354 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-17 08:59:12,374 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 08:59:16,880 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-17 08:59:19,590 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 09:10:12,715 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 09:46:11,565 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 10:47:52,514 - WARNING: Not Found: /robots.txt
+2016-07-17 15:03:51,140 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-17 15:31:57,606 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 16:39:21,579 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 20:04:34,893 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 20:10:47,754 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 23:34:29,890 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 23:34:30,272 - WARNING: Not Found: /favicon.ico
+2016-07-17 23:34:35,624 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 23:34:37,695 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-17 23:34:43,137 - INFO: /******misson is  adding 200 time for the artical*****/
+2016-07-17 23:34:43,138 - INFO: http://bbs.8264.com/forum.php?mod=viewthread&tid=5318690&extra=
+2016-07-17 23:35:09,863 - INFO: /*******misson is finished********/
+2016-07-17 23:36:57,018 - INFO: /******misson is  adding 200 time for the artical*****/
+2016-07-17 23:36:57,018 - INFO: http://bbs.8264.com/forum.php?mod=viewthread&tid=5318690&extra=
+2016-07-17 23:37:18,436 - INFO: /*******misson is finished********/
+2016-07-18 02:33:27,109 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-18 04:07:35,135 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-18 04:07:35,186 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-18 04:07:35,195 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-18 04:11:36,651 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-18 04:11:44,408 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-18 06:20:49,093 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-18 07:01:48,700 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-18 07:29:39,230 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-18 08:29:44,797 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-18 09:36:46,332 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-18 11:29:51,069 - WARNING: Not Found: /robots.txt
+2016-07-18 11:41:38,065 - WARNING: Not Found: /favicon.ico
+2016-07-18 12:29:53,366 - WARNING: Not Found: /assets/js/ie8-responsive-file-warning.js
+2016-07-18 18:04:01,346 - WARNING: Not Found: /assets/js/ie8-responsive-file-warning.js
+2016-07-19 02:07:52,441 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 02:07:52,485 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 02:07:52,491 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 02:35:50,438 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 02:35:50,482 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 02:35:50,490 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 02:48:19,388 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 02:48:19,441 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 02:48:19,453 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 02:49:23,871 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 02:49:23,923 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 02:49:24,141 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 02:59:25,028 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 03:26:07,021 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 03:59:32,038 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 06:30:38,416 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 06:30:38,533 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 06:30:40,128 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 08:35:59,859 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 09:06:46,908 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 09:06:47,091 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 09:06:47,098 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 09:07:07,315 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 09:07:07,421 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 09:07:08,115 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-19 21:23:31,250 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-20 01:42:31,220 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-20 01:50:47,009 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-20 02:06:11,352 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-20 03:09:56,151 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-20 03:17:53,653 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-20 03:24:07,457 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-20 04:51:07,873 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-20 04:53:00,660 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-20 05:36:03,112 - WARNING: Forbidden (CSRF cookie not set.): /booking_cave/
+2016-07-20 08:30:02,350 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-20 11:07:17,162 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-20 11:39:18,189 - WARNING: Not Found: /assets/js/ie8-responsive-file-warning.js
+2016-07-20 11:39:25,569 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-20 11:45:21,316 - WARNING: Not Found: /assets/js/ie8-responsive-file-warning.js
+2016-07-20 12:54:32,895 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-20 12:55:17,973 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-20 12:56:19,078 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-20 13:07:57,635 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-20 13:10:03,973 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-20 17:58:01,665 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-20 18:49:07,843 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-20 22:12:30,361 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-20 22:12:30,450 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-20 22:13:30,104 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-21 01:17:00,506 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 01:19:10,327 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 01:23:45,168 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 01:26:50,142 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 01:27:15,886 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 01:27:37,911 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 01:35:02,485 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 01:35:14,275 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 02:52:22,323 - WARNING: Not Found: /robots.txt
+2016-07-21 07:39:39,525 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 07:39:39,598 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 07:39:39,634 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 07:42:15,242 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 07:42:15,308 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 07:42:15,379 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 08:25:35,602 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 08:25:35,678 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 08:25:35,684 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 08:26:36,622 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 08:26:36,694 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 08:26:36,702 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 10:06:44,748 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 10:06:44,927 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 10:20:12,231 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 10:20:12,351 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 10:20:12,477 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 10:20:12,642 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 12:21:14,996 - WARNING: Not Found: /assets/js/ie8-responsive-file-warning.js
+2016-07-21 13:09:07,075 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 13:28:16,553 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 13:29:35,025 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 20:54:43,112 - WARNING: Not Found: /assets/js/ie8-responsive-file-warning.js
+2016-07-21 20:54:43,241 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-21 20:54:49,026 - WARNING: Not Found: /assets/js/ie8-responsive-file-warning.js
+2016-07-21 20:55:49,547 - WARNING: Not Found: /assets/js/ie8-responsive-file-warning.js
+2016-07-21 20:55:56,318 - WARNING: Not Found: /assets/js/ie8-responsive-file-warning.js
+2016-07-21 21:42:49,098 - WARNING: Not Found: /favicon.ico
+2016-07-21 21:42:49,104 - WARNING: Not Found: /apple-touch-icon-precomposed.png
+2016-07-21 21:42:49,644 - WARNING: Not Found: /apple-touch-icon.png
+2016-07-21 21:42:51,761 - WARNING: Not Found: /apple-touch-icon-precomposed.png
+2016-07-21 21:42:52,275 - WARNING: Not Found: /apple-touch-icon.png
+2016-07-22 02:39:27,502 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-22 03:46:40,296 - WARNING: Not Found: /robots.txt
+2016-07-22 04:58:39,927 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-22 06:15:31,032 - WARNING: Not Found: /robots.txt
+2016-07-22 06:23:07,813 - WARNING: Not Found: /robots.txt
+2016-07-22 06:23:08,410 - WARNING: Not Found: /sitemap.xml
+2016-07-22 08:10:05,420 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-22 08:10:39,571 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-22 09:15:25,979 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-22 15:17:11,836 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-22 21:11:35,314 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-23 11:25:32,803 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-23 11:42:14,842 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-23 11:42:49,295 - ERROR: Internal Server Error: /booking_cave/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/my_app/crm/views.py", line 169, in booking_cave
+    if "Mobile" in request.META["HTTP_USER_AGENT"]:
+KeyError: 'HTTP_USER_AGENT'
+2016-07-23 11:44:25,189 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-23 12:18:30,899 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-24 13:52:43,367 - WARNING: Not Found: /robots.txt
+2016-07-25 02:07:06,937 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-25 04:16:48,182 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-25 05:13:46,844 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-25 09:06:09,838 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-25 11:31:56,671 - WARNING: Not Found: /robots.txt
+2016-07-25 14:03:57,975 - WARNING: Not Found: /robots.txt
+2016-07-25 17:05:11,408 - WARNING: Not Found: /favicon.ico
+2016-07-25 17:05:12,090 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-25 19:51:03,473 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-25 20:07:39,730 - WARNING: Not Found: /favicon.ico
+2016-07-25 21:37:29,404 - WARNING: Not Found: /robots.txt
+2016-07-26 02:46:31,909 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-26 02:46:32,267 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-26 02:46:32,274 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-26 09:26:01,701 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-26 09:26:01,805 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-26 09:26:03,094 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-26 09:26:07,858 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-26 09:26:07,955 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-26 09:26:08,006 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-26 11:55:51,497 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-26 15:13:10,316 - WARNING: Not Found: /robots.txt
+2016-07-26 15:28:04,288 - WARNING: Not Found: /robots.txt
+2016-07-26 17:09:01,821 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-26 19:32:24,528 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-26 19:32:24,620 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-26 19:32:24,627 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-26 19:32:25,262 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-26 19:32:25,479 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-26 19:33:06,249 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-26 19:33:06,335 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-26 19:33:06,368 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-26 20:01:43,304 - WARNING: Not Found: /favicon.ico
+2016-07-26 20:02:46,749 - WARNING: Not Found: /favicon.ico
+2016-07-26 20:30:58,231 - WARNING: Not Found: /apple-touch-icon-precomposed.png
+2016-07-26 20:30:58,236 - WARNING: Not Found: /favicon.ico
+2016-07-26 20:30:58,998 - WARNING: Not Found: /apple-touch-icon.png
+2016-07-26 20:31:01,667 - WARNING: Not Found: /apple-touch-icon-precomposed.png
+2016-07-26 20:31:02,706 - WARNING: Not Found: /apple-touch-icon.png
+2016-07-26 21:54:19,477 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-27 05:14:23,079 - WARNING: Not Found: /booking_cave
+2016-07-27 06:35:18,440 - WARNING: Not Found: /robots.txt
+2016-07-27 11:48:24,951 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-27 13:13:27,835 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-27 13:17:56,718 - WARNING: Forbidden (CSRF cookie not set.): /booking_cave/
+2016-07-27 13:18:08,902 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-27 14:24:43,419 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-27 15:20:55,715 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-27 15:30:27,018 - WARNING: Not Found: /favicon.ico
+2016-07-27 15:30:27,856 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-27 15:30:30,440 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-27 15:30:31,943 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-27 17:12:12,936 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-28 00:53:00,304 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-28 00:53:06,245 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-28 00:58:09,352 - WARNING: Forbidden (CSRF cookie not set.): /custome/
+2016-07-28 03:29:38,758 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-28 05:04:17,428 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-28 05:47:02,008 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-28 08:50:50,959 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-28 08:55:47,732 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-28 09:28:55,146 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-28 09:31:52,099 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-28 10:05:24,223 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-28 10:05:26,039 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-28 10:06:53,880 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-28 10:28:06,189 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-28 12:31:27,550 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
+2016-07-28 18:01:16,474 - WARNING: Not Found: /assets/flash/ZeroClipboard.swf
