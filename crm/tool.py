@@ -1,8 +1,6 @@
- #-*- coding: utf-8 -*-
+#-*- coding: utf-8 -*-
 #from xlwt import Workbook
 import datetime
-import email.Encoders as encoders
-import email
 import smtplib
 import httplib2
 import logging
@@ -10,8 +8,6 @@ import os
 import settings
 import qiniu.config
 from crm.models import Person, Bill
-from email.MIMEMultipart import MIMEMultipart
-from email.MIMEBase import MIMEBase
 from email.MIMEText import MIMEText
 from random import Random
 from qiniu import Auth, put_file, etag, urlsafe_base64_encode, BucketManager

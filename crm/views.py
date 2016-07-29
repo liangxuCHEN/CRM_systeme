@@ -1,4 +1,4 @@
- #-*- coding: utf-8 -*-
+#-*- coding: utf-8 -*-
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login, logout
@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect, HttpResponse, StreamingHttpRespons
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django import forms
 from crm.forms import PersonForm, AuthenticationForm, CastleForm
-from crm.models import Person, Bill, Castle
+from crm.models import Person, Bill, Castle, Contract
 from datetime import datetime, timedelta
 from tool import send_mail, check_bill_each_day,generate_booking_mail, generate_custome_mail
 from tool import add_artical_reading, qiniu_token, qiniu_upload, qiniu_download, qiniu_file
@@ -300,3 +300,39 @@ def get_qiniu_file(request):
             pre_text = request.GET.get('pre_text')
             limit = request.GET.get('limit')
             return  JsonResponse(qiniu_file(pre_text,limit))
+
+def contract(request):
+    content = {}
+    contracts =Contract.objects.all()
+    if  request.GET != {}:
+        id_contract = request.GET.get('id_contract', '')
+        client_name = request.GET.get("client_name", "")
+        trip_date = request.GET.get("trip_date", "")
+        if client_name != '':
+            contracts = contracts.filter(client_name__contains=client_name)
+        if trip_date !="":
+            contracts = contracts.filter(trip_date=trip_date)
+
+    page_size =  10
+    paginator = Paginator(contracts, page_size)
+    try:
+        page = int(request.GET.get('page','1'))
+    except ValueError:
+        page = 1
+    try:
+        contracts_page = paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        ccontracts_page = paginator.page(paginator.num_pages)
+
+    content["contracts"] = contracts_page
+    return render(request, "contract.html", content)
+
+def make_contract(request, contract_id):
+    if request.user.is_authenticated():
+        content = {}
+        contract = Contract.objects.get(id=contract_id)
+        content['contract'] = contract
+        return render(request, 'make_contract.html', content) 
+    else:
+        return HttpResponseRedirect('/login')
+    

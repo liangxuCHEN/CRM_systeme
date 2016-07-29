@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}合同出行凭证列表{% endblock %}
+{% block content %}
+<div class="chen_title">
+<div class="pull-left"><img src="http://7xoom6.com5.z0.glb.qiniucdn.com/logo-logo_piaoling.png"></div>
+<div class="pull-right"><img src="http://7xotgs.com5.z0.glb.qiniucdn.com/wp-content/uploads/2015/03/wx_ipiaoling_qcode-150x150.jpg?imageView2/1/w/80/h/80/" alt="wx_ipiaoling_qcode"></div>
+<div class="clearfix"></div>
+<h1 class="text-center">出游凭证<h1>
+</div>	
+<div class="panel panel-primary">
+<div class="panel-heading">客户信息</div>
+<table class="table">
+ <tr><td class="col-xs-4 col-md-2">订单号</td><td class="col-xs-8 col-md-6">{{contract.id_contract}}</td></tr>
+ <tr><td >客户姓名</td><td>{{contract.client_name}}</td></tr>
+ <tr><td>客户微信</td><td>{{contract.client_wechat}}</td></tr>
+ <tr><td>客户手机</td><td>{{contract.client_phone}}</td></tr>
+ <tr><td>客户护照</td><td>{{contract.client_passport}}</td></tr>
+</table>
+</div>
+
+<div class="panel panel-primary">
+<div class="panel-heading">订单信息</div>
+<table class="table">
+ <tr><td class="col-xs-4 col-md-2">预订项目</td><td class="col-xs-8 col-md-6">{{contract.trip_info}}</td></tr>
+ <tr><td>出游人数</td><td>{{contract.num_person}}</td></tr>
+ <tr><td>出发日期</td><td>{{contract.trip_date}}</td></tr>
+ <tr><td>收费情况</td><td>{{contract.due}}</td></tr>
+ <tr><td>接送信息</td><td>{{contract.reception}}</td></tr>
+</table>
+</div>
+
+<div class="panel panel-primary">
+<div class="panel-heading">联系我们</div>
+<table class="table">
+ <tr><td class="col-xs-4 col-md-2">紧急联系人</td><td class="col-xs-8 col-md-6">{{contract.contact_emergency}}</td></tr>
+ <tr><td>客服姓名</td><td>{{contract.call_center_name}}</td></tr>
+ <tr><td>客服电话</td><td>{{contract.call_center_phone}}</td></tr>
+ <tr><td>客服微信</td><td>{{contract.call_center_wechat}}</td></tr>
+</table>
+</div>
+
+<div class="panel panel-primary">
+<div class="panel-heading">备注提醒</div>
+<div class="panel-body">
+    <p>{{contract.trip_comment}}</p>
+  </div>
+</div>
+{% endblock %}

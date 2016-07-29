@@ -1,4 +1,4 @@
- #-*- coding: utf-8 -*-
+#-*- coding: utf-8 -*-
 from django import forms
 from crm.models import Person, Bill, Castle
 from django.utils import timezone

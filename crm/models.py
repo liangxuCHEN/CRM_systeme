@@ -1,4 +1,4 @@
- #-*- coding: utf-8 -*-
+#-*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 from django.db import models
@@ -55,3 +55,20 @@ class Bill(models.Model):
     is_send_wether = models.BooleanField(u"已发天气提醒", default=False)
     is_send_plan = models.BooleanField(u"已发行程提醒", default=False)
     comment = models.CharField(u"备注", max_length = 200, null = True, blank = True)
+
+class Contract(models.Model):
+    id_contract = models.CharField(u"订单号", max_length=20)
+    client_name = models.CharField(u"客户姓名", max_length=40)
+    client_wechat = models.CharField(u"客户微信", max_length=20)
+    client_phone = models.CharField(u"客户手机", max_length=15)
+    client_passport = models.CharField(u"客户护照", max_length=15)
+    trip_info = models.TextField(u"预订项目")
+    num_person = models.IntegerField(u"出游人数")
+    trip_date = models.DateField(u"出发日期")
+    due = models.TextField(u"收费情况")
+    reception = models.TextField(u"接送信息")
+    contact_emergency = models.CharField(u"紧急联系人", max_length=50)
+    call_center_name = models.CharField(u"客服姓名", max_length=20)
+    call_center_phone = models.CharField(u"客服电话", max_length=20)
+    call_center_wechat = models.CharField(u"客服微信", max_length=20)
+    trip_comment = models.TextField(u"备注提示")

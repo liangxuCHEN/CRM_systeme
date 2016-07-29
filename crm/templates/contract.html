@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}合同出行凭证列表{% endblock %}
+{% block content %}
+<div class="jumbotron" id="contract">
+{% if contracts %}
+ <table class="table">
+   <thead>
+   <tr>
+     <form role="from" method="get" class="form-horizontal" action="/contract"  >
+       <tr>
+        <td>#</td>
+        <td><input type="submit" value="搜索" class="btn btn-primary"/></td>
+         <td><input type='text' name="client_name" placeholder="名字" class="form-control"  /></td>
+          <td> <input type='date' name="trip_date" placeholder="Date" class="form-control"  /></td>
+        </tr>
+      </form>
+   </tr>
+     <tr><td>#</td><td>订单ID</td><td>客人姓名</td><td>出发日期</td><td>生成凭证</td></tr>
+   </thead>
+   <tbody>
+  {% for contract in contracts %}
+      <tr>
+      <td>{{contract.id}}</td>
+      <td>{{contract.id_contract}}</td>
+      <td>{{contract.client_name}}</td>
+      <td>{{contract.trip_date}}</td>
+      <td> <a href="{% url 'make_contract' contract.id %}" class="btn btn-small">生成</td>
+      </tr>
+  {% endfor %}
+ </tbody>
+ </table>
+{% endif %}
+ <div class="pull-left">
+      <ul class="pagination">
+            {% if contracts.has_previous %}
+                <li><a href="?page={{ contracts.previous_page_number }}">prev</a></li>
+            {% endif %}
+            <script type="text/javascript">
+            for (var i=1;i<={{ contracts.paginator.num_pages }};i++)
+            {
+             if (i == {{ contracts.number }}) {
+                document.write("<li class='active'> <a href='?page=" + i + "'>" + i + "</a></li>");
+             } else {
+              document.write("<li> <a href='?page=" + i + "'>" + i + "</a></li>");
+             }
+            }
+            </script>
+            {% if contracts.has_next %}
+               <li> <a href="?page={{ contracts.next_page_number }}">next</a></li>
+            {% endif %}
+      </ul>
+  </div>
+
+ </div>
+ 
+{% endblock %}
