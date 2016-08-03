@@ -24,7 +24,11 @@
       <td>{{contract.id_contract}}</td>
       <td>{{contract.client_name}}</td>
       <td>{{contract.trip_date}}</td>
-      <td> <a href="{% url 'make_contract' contract.id %}" class="btn btn-small">生成</td>
+      <td> 
+      {% for company in company_list %}
+      <a href="{% url 'make_contract' contract.id  company %}"><button  class="btn btn-primary btn-sm">{{company}}
+      </button></a>{% endfor %}
+      </td>
       </tr>
   {% endfor %}
  </tbody>

@@ -37,5 +37,5 @@ urlpatterns = [
     url(r'^download_pic/$',views.download_pic, name='download_pic'),
     url(r'^get_qiniu_file/$',views.get_qiniu_file, name='get_qiniu_file'),
     url(r'^contract/$',views.contract, name='contract'),
-    url(r'^make_contract/(?P<contract_id>\d+)/$',views.make_contract, name='make_contract'),
+    url(r'^make_contract/(?P<contract_id>\d+)/(?P<company_name>\w+)$',views.make_contract, name='make_contract'),
 ]

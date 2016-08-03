@@ -12,6 +12,7 @@ from crm.models import Person, Bill, Castle, Contract
 from datetime import datetime, timedelta
 from tool import send_mail, check_bill_each_day,generate_booking_mail, generate_custome_mail
 from tool import add_artical_reading, qiniu_token, qiniu_upload, qiniu_download, qiniu_file
+import settings
 # Create your views here.
 
 def home(request):
@@ -325,13 +326,18 @@ def contract(request):
         ccontracts_page = paginator.page(paginator.num_pages)
 
     content["contracts"] = contracts_page
+    content['company_list'] = settings.COMMPANY
     return render(request, "contract.html", content)
 
-def make_contract(request, contract_id):
+def make_contract(request, contract_id, company_name):
     if request.user.is_authenticated():
         content = {}
         contract = Contract.objects.get(id=contract_id)
-        content['contract'] = contract
+        content["contract"] = contract
+        content["company"] = company_name
+        company_id = settings.COMMPANY.index(company_name)
+        content["company_img"] = settings.COMMPANY_IMG[company_id]
+        content["company_2d_code"] = settings.COMMPANY_2D_CODE[company_id]
         return render(request, 'make_contract.html', content) 
     else:
         return HttpResponseRedirect('/login')

@@ -2,8 +2,8 @@
 {% block title %}合同出行凭证列表{% endblock %}
 {% block content %}
 <div class="chen_title">
-<div class="pull-left"><img src="http://7xoom6.com5.z0.glb.qiniucdn.com/logo-logo_piaoling.png"></div>
-<div class="pull-right"><img src="http://7xotgs.com5.z0.glb.qiniucdn.com/wp-content/uploads/2015/03/wx_ipiaoling_qcode-150x150.jpg?imageView2/1/w/80/h/80/" alt="wx_ipiaoling_qcode"></div>
+<div class="pull-left"><img src="{{ company_img }}"></div>
+<div class="pull-right"><img src="{{ company_2d_code }}" alt="wx_ipiaoling_qcode"></div>
 <div class="clearfix"></div>
 <h1 class="text-center">出游凭证<h1>
 </div>	
@@ -40,9 +40,20 @@
 </div>
 
 <div class="panel panel-primary">
-<div class="panel-heading">备注提醒</div>
-<div class="panel-body">
+ <div class="panel-heading">备注提醒</div>
+  <div class="panel-body">
     <p>{{contract.trip_comment}}</p>
   </div>
+ <div class="panel-heading">注意事项</div>
+  <div class="panel-body">
+   <p>
+    	<ul>
+    		<li>一日游行程时间安排为 8:30 - 18:30，司机每天10小时工作制。超时费用为40欧/小时，当场支付给司机</li>
+    		<li>成功提交预订信息后，客服会在24小时内联系您</li>
+    		<li>成功预订行程后，需要支付30%的预订金，我们推荐使用支付宝人民币支付。</li>
+    		<li>如果需要退订，请以邮件或者电话形式进行取消；行程日期前7天取消的，退还全部预订金；行程日期前3天取消的，退还50%预订金；行程日期3天内取消的，不退还预订金。</li>
+    	</ul>
+    </p>
+ </div>
 </div>
 {% endblock %}
