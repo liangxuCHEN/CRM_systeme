@@ -1,0 +1,39 @@
+{% extends "base_without_bar.html" %}
+{% block title %}酒庄预约{% endblock %}
+{% block head %}
+<style type="text/css">
+html{    background:url(http://7xoom6.com1.z0.glb.clouddn.com/bg-psb.jpg) no-repeat;
+  background-size: cover;
+  height:100%;
+}
+  #form-div {
+    width: 98%;
+    color: #FFFFFF;
+    font-size: 15px;
+    left: 1%;
+    float: none;
+    margin-left: 0px;
+  }
+</style>
+{% endblock %}
+{% block service %} {{service_phone}} {% endblock %}
+{% block content %}
+<div id="form-div">
+{% if chateau_list %}
+<div class="row">
+  {% for chateau in chateau_list %}
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img class="img-circle" src="{{chateau.pic_url}}?imageView2/1/w/250/interlace/0/q/100">
+          <div class="caption">
+            <h3>{{chateau.cn_name}}<small>{{chateau.name}}</small></h3>
+            <p>地区：{{chateau.place}}</p>
+            <p><a href="{% url 'chateau_detail' chateau.id %}" class="btn btn-info" role="button">介绍</a></p>
+          </div>
+        </div>
+      </div>
+   {% endfor %}
+</div>
+{% endif %}
+<div>
+{% endblock %}

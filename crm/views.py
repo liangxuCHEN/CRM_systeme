@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect, HttpResponse, StreamingHttpRespons
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django import forms
 from crm.forms import PersonForm, AuthenticationForm, CastleForm
-from crm.models import Person, Bill, Castle, Contract
+from crm.models import Person, Bill, Castle, Contract, Chateau, Service
 from datetime import datetime, timedelta
 from tool import send_mail, check_bill_each_day,generate_booking_mail, generate_custome_mail
 from tool import add_artical_reading, qiniu_token, qiniu_upload, qiniu_download, qiniu_file
@@ -342,3 +342,31 @@ def make_contract(request, contract_id, company_name):
     else:
         return HttpResponseRedirect('/login')
     
+def chateau_index(request):
+    content = {}
+    chateaus = Chateau.objects.all()
+
+    page_size =  10
+    paginator = Paginator(chateaus, page_size)
+    try:
+        page = int(request.GET.get('page','1'))
+    except ValueError:
+        page = 1
+    
+    try:
+        chateau_page = paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        chateau_page = paginator.page(paginator.num_pages)
+
+    content['chateau_list'] = chateau_page
+    return render(request, 'chateau.html', content)
+
+def chateau_detail(request, chateau_id):
+   content = {}
+   chateau = Chateau.objects.get(id=chateau_id)
+   services = Service.objects.filter(chateau_id = chateau_id)
+   if chateau:
+       content['chateau'] = chateau
+   if services:
+       content['service_list'] = services
+   return render(request, 'chateau_detail.html', content)

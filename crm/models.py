@@ -72,3 +72,20 @@ class Contract(models.Model):
     call_center_phone = models.CharField(u"客服电话", max_length=20)
     call_center_wechat = models.CharField(u"客服微信", max_length=20)
     trip_comment = models.TextField(u"备注提示")
+
+class Chateau(models.Model):
+    def __unicode__(self):
+        return self.cn_name
+    name = models.CharField(u'法语名字', max_length=80)
+    cn_name = models.CharField(u'中文名字', max_length=80)
+    pic_url = models.URLField(u'图片URL', blank = True, null = True)
+    presentation_chateau =  models.TextField(u'酒庄介绍', blank = True, null = True)
+    presentation_vin = models.TextField(u'红酒介绍', blank = True, null = True)
+    place = models.CharField(u'位置', max_length=80)
+
+class Service(models.Model):
+    chateau = models.ForeignKey(Chateau)
+    title = models.CharField(u'服务名称', max_length=40)
+    description = models.CharField(u'服务描述', max_length=200, blank = True, null = True)
+    price = models.IntegerField(u'每人费用€')
+
