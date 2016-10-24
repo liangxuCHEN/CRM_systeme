@@ -93,6 +93,21 @@ def generate_booking_mail(data):
     res = send_mail(mail_to, u"酒庄预约咨询", body)
     return res
 
+def generate_booking_mail_v2(data,content):
+    body = u"<p>来自 %s 网站的咨询, 有一个客户的预约 <br>"
+    body += u'姓名:  ' + data['clientName'] + '<br>'
+    body += u'电话:  ' + data['phone'] + '<br>'
+    body += u'邮箱:  ' + data['email']+ '<br>'
+    body += u'参观日期:  ' + data['visitDate'] + '<br>'
+    body += u'参观酒庄:  ' + content["chateau"] + '<br>'
+    body += u'需要的服务:  ' + content["service"] + u", 每人费用: " + str(content["price"]) + u'€'+'<br>'
+    body += u'参观人数:  ' + data['member'] + '<br>'
+    body += u'儿童:  ' + data['has_child'] + '<br>'
+    body += u'留言: ' + data['commentText'] + '<br></p>'
+    mail_to = 'lchen@europely.com,reservation@europely.com'
+    res = send_mail(mail_to, u"酒庄预约咨询", body)
+    return res
+
 def generate_custome_mail(data):
     body = u"<p>来自 %s 网站的咨询, 有一个客户的定制旅游咨询 <br>" % data['from_site']
     body += u'姓名:  ' + data['clientName'] + '<br>'

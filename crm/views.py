@@ -10,7 +10,7 @@ from django import forms
 from crm.forms import PersonForm, AuthenticationForm, CastleForm
 from crm.models import Person, Bill, Castle, Contract, Chateau, Service
 from datetime import datetime, timedelta
-from tool import send_mail, check_bill_each_day,generate_booking_mail, generate_custome_mail
+from tool import send_mail, check_bill_each_day,generate_booking_mail, generate_booking_mail_v2, generate_custome_mail
 from tool import add_artical_reading, qiniu_token, qiniu_upload, qiniu_download, qiniu_file
 import settings
 # Create your views here.
@@ -370,3 +370,25 @@ def chateau_detail(request, chateau_id):
    if services:
        content['service_list'] = services
    return render(request, 'chateau_detail.html', content)
+
+def booking_service(request):
+    if request.method == "POST":
+        data=request.POST
+        content={}
+        try:
+            service = Service.objects.get(id=data['service_id'])
+            print service
+            content["chateau"] = service.chateau.cn_name
+            content["service"] = service.title
+            content["price"] = service.price
+            
+            content['service_phone'] = "400-845-0085"
+            content['site'] = "飘零旅游"
+            if generate_booking_mail_v2(data,content):
+                content =  u"<p>您好%s</p><h4>我们已经收到您的预约信息，行程顾问会尽快回复您, 谢谢</h4>"  % data['clientName']
+            else:
+                content =  u"<p>您好%s</p><h4>我们非常抱歉，您的预约没有成功,请直接联系400-845-0085</h4>"  % (data['clientName'])
+        except:
+           content =  u"<p>您好%s</p><h4>我们非常抱歉，您的预约没有成功,请直接联系400-845-0085</h4>"  % (data['clientName'])
+        
+        return HttpResponse(content)        
