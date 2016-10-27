@@ -345,8 +345,16 @@ def make_contract(request, contract_id, company_name):
 def chateau_index(request):
     content = {}
     chateaus = Chateau.objects.all()
+    if request.method == "POST":
+        data = request.POST
+        if data["place"]!="":
+            chateaus = chateaus.filter(place__contains=data["place"])
+        if data["chateau"]!="":
+            chateaus = chateaus.filter(name__contains=data["chateau"])
+        if data["chateau_cn"]!="":
+            chateaus = chateaus.filter(cn_name__contains=data["chateau_cn"])
 
-    page_size =  10
+    page_size =  6
     paginator = Paginator(chateaus, page_size)
     try:
         page = int(request.GET.get('page','1'))
@@ -359,17 +367,29 @@ def chateau_index(request):
         chateau_page = paginator.page(paginator.num_pages)
 
     content['chateau_list'] = chateau_page
+    try:
+        site = request.GET["site"]
+        service_phone = request.GET["service_phone"]
+    except:
+        site = u"客服电话"
+        service_phone = "400-845-0085"
+
+    content["from_site"]=site
+    content["service_phone"]=site + u"客服 : "+ service_phone
+    
     return render(request, 'chateau.html', content)
 
 def chateau_detail(request, chateau_id):
-   content = {}
-   chateau = Chateau.objects.get(id=chateau_id)
-   services = Service.objects.filter(chateau_id = chateau_id)
-   if chateau:
-       content['chateau'] = chateau
-   if services:
-       content['service_list'] = services
-   return render(request, 'chateau_detail.html', content)
+    content = {}
+    chateau = Chateau.objects.get(id=chateau_id)
+    services = Service.objects.filter(chateau_id = chateau_id)
+    content["display"] = Chateau.objects.all().order_by('-id')[:3]
+    content['chateau'] = chateau
+    if services:
+        content['service_list'] = services
+
+    content["service_phone"] = u"客服 : 400-845-0085"
+    return render(request, 'chateau_detail.html', content)
 
 def booking_service(request):
     if request.method == "POST":
@@ -385,10 +405,10 @@ def booking_service(request):
             content['service_phone'] = "400-845-0085"
             content['site'] = "飘零旅游"
             if generate_booking_mail_v2(data,content):
-                content =  u"<p>您好%s</p><h4>我们已经收到您的预约信息，行程顾问会尽快回复您, 谢谢</h4>"  % data['clientName']
+                content =  u'<div class="well well-lg"><p>您好%s</p><h4>我们已经收到您的预约信息，行程顾问会尽快回复您, 谢谢</h4>'  % data['clientName']
             else:
-                content =  u"<p>您好%s</p><h4>我们非常抱歉，您的预约没有成功,请直接联系400-845-0085</h4>"  % (data['clientName'])
+                content =  u'<div class="well well-lg"><p>您好%s</p><h4>我们非常抱歉，您的预约没有成功,请直接联系400-845-0085</h4>'  % (data['clientName'])
         except:
-           content =  u"<p>您好%s</p><h4>我们非常抱歉，您的预约没有成功,请直接联系400-845-0085</h4>"  % (data['clientName'])
+           content =  u'<div class="well well-lg"><p>您好%s</p><h4>我们非常抱歉，您的预约没有成功,请直接联系400-845-0085</h4>'  % (data['clientName'])
         
         return HttpResponse(content)        

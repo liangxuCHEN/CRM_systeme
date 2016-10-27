@@ -40,8 +40,28 @@
    {% endfor %}
 {% endif %}
 <a href="{% url 'chateau' %}" class="btn btn-primary btn-lg" role="button">返回</a>
+
+
+
+  {% if display %}
+  <div class="row">
+    <div class="page-header">
+      <h3>相关酒庄推荐</h3>
+      </div>
+    {% for item in display %}
+        <div class="col-sm-3 col-md-4">
+          <div class="thumbnail">
+            <img class="img-circle" src="{{item.pic_url}}?imageView2/1/w/200/interlace/0/q/100">
+              <h4><a href="{% url 'chateau_detail' item.id %}">{{item.cn_name}}</a></h4>
+          </div>
+        </div>
+     {% endfor %}
+  </div>
+  {% endif %}
+
 </div>
 
+<!-- Modal -->
 <form role="form" action="{% url 'booking_service' %}" method="POST" id="form1">
 {% csrf_token %}
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -53,7 +73,7 @@
         <h4 class="modal-title" id="chateau_name">预约{{chateau.cn_name}}</h4>
       </div>
       <div class="modal-body">
-          <!-- Modal -->
+          
        
        
         <div class="well">

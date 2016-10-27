@@ -18,22 +18,40 @@ html{    background:url(http://7xoom6.com1.z0.glb.clouddn.com/bg-psb.jpg) no-rep
 {% endblock %}
 {% block service %} {{service_phone}} {% endblock %}
 {% block content %}
+
 <div id="form-div">
-{% if chateau_list %}
-<div class="row">
-  {% for chateau in chateau_list %}
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <img class="img-circle" src="{{chateau.pic_url}}?imageView2/1/w/250/interlace/0/q/100">
-          <div class="caption">
-            <h3>{{chateau.cn_name}}<small>{{chateau.name}}</small></h3>
-            <p>地区：{{chateau.place}}</p>
-            <p><a href="{% url 'chateau_detail' chateau.id %}" class="btn btn-info" role="button">介绍</a></p>
+  <form class="form-inline" role="form" action="{% url 'chateau' %}" method="post">
+  {% csrf_token %}
+  <div class="page-header">
+    <button class="btn btn-success">搜索酒庄</button>
+    <div class="form-group">
+      <input type="text" class="form-control" name="place" placeholder="输入地点:城市或产区">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" name="chateau_cn" placeholder="输入酒庄中文名">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" name="chateau" placeholder="输入酒庄法文名">
+    </div>
+  </div>
+</form>
+
+  {% if chateau_list %}
+  <div class="row">
+    {% for chateau in chateau_list %}
+        <div class="col-sm-6 col-md-6 col-lg-6">
+          <div class="thumbnail">
+            <img class="img-circle" src="{{chateau.pic_url}}?imageView2/1/w/250/interlace/0/q/100">
+            <div class="caption">
+              <h3>{{chateau.cn_name}}</h3>
+              <em>{{chateau.name}}</em>
+              <p>地区：{{chateau.place}}</p>
+              <p><a href="{% url 'chateau_detail' chateau.id %}" class="btn btn-info" role="button">介绍</a></p>
+            </div>
           </div>
         </div>
-      </div>
-   {% endfor %}
-</div>
-{% endif %}
+     {% endfor %}
+  </div>
+  {% endif %}
 <div>
 {% endblock %}
