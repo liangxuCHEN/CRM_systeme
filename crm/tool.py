@@ -94,7 +94,7 @@ def generate_booking_mail(data):
     return res
 
 def generate_booking_mail_v2(data,content):
-    body = u"<p>来自 %s 网站的咨询, 有一个客户的预约 <br>"
+    body = u"<p>来自 %s 网站的咨询, 有一个客户的预约 <br>" % data['site']
     body += u'姓名:  ' + data['clientName'] + '<br>'
     body += u'电话:  ' + data['phone'] + '<br>'
     body += u'邮箱:  ' + data['email']+ '<br>'

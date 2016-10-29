@@ -2,6 +2,8 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.db.models.aggregates import Count
+from random import randint
 
 CITY_MODEL = (
     ('Paris,France', u'巴黎'),
@@ -25,6 +27,8 @@ LEVEL_BOOK = (
     (u"困难", u"困难"),
     (u"几乎不可能", u"几乎不可能"),
 )
+
+DEFAULT_CHATEAU_PIC = "http://7xoom6.com2.z0.glb.clouddn.com/wp-content/uploads/2015/08/baima.jpg"
 # Create your models here.
 class Person(models.Model):
     def __unicode__(self):
@@ -73,15 +77,30 @@ class Contract(models.Model):
     call_center_wechat = models.CharField(u"客服微信", max_length=20)
     trip_comment = models.TextField(u"备注提示")
 
+#random function in the object
+class ChateauManager(models.Manager):
+    def random_chose_chateau(self, num):
+        #num is the number of chateau that we need to choose
+        count = self.aggregate(count=Count('id'))['count']
+        randon_list = []
+        id_list = []
+        while len(id_list) < num:
+            random_id = randint(0, count-1)
+            if random_id not in id_list:
+                id_list.append(random_id)
+                randon_list.append(self.all()[random_id])
+        return randon_list
+
 class Chateau(models.Model):
     def __unicode__(self):
         return self.cn_name
     name = models.CharField(u'法语名字', max_length=80)
     cn_name = models.CharField(u'中文名字', max_length=80)
-    pic_url = models.URLField(u'图片URL', blank = True, null = True)
+    pic_url = models.URLField(u'图片URL', blank = True, null = True, default=DEFAULT_CHATEAU_PIC)
     presentation_chateau =  models.TextField(u'酒庄介绍', blank = True, null = True)
     presentation_vin = models.TextField(u'红酒介绍', blank = True, null = True)
     place = models.CharField(u'位置', max_length=80)
+    objects = ChateauManager()
 
 class Service(models.Model):
     chateau = models.ForeignKey(Chateau)

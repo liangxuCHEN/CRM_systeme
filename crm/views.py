@@ -379,16 +379,17 @@ def chateau_index(request):
     
     return render(request, 'chateau.html', content)
 
-def chateau_detail(request, chateau_id):
+def chateau_detail(request, chateau_id, site):
     content = {}
     chateau = Chateau.objects.get(id=chateau_id)
     services = Service.objects.filter(chateau_id = chateau_id)
-    content["display"] = Chateau.objects.all().order_by('-id')[:3]
+    content["display"] = Chateau.objects.random_chose_chateau(3)
     content['chateau'] = chateau
     if services:
         content['service_list'] = services
 
-    content["service_phone"] = u"客服 : 400-845-0085"
+    content["service_phone"] = site + " : 400-845-0085"
+    content["site"] = site
     return render(request, 'chateau_detail.html', content)
 
 def booking_service(request):
@@ -403,12 +404,11 @@ def booking_service(request):
             content["price"] = service.price
             
             content['service_phone'] = "400-845-0085"
-            content['site'] = "飘零旅游"
             if generate_booking_mail_v2(data,content):
-                content =  u'<div class="well well-lg"><p>您好%s</p><h4>我们已经收到您的预约信息，行程顾问会尽快回复您, 谢谢</h4>'  % data['clientName']
+                content =  u'<p>您好%s</p><h4>我们已经收到您的预约信息，行程顾问会尽快回复您, 谢谢</h4>'  % data['clientName']
             else:
-                content =  u'<div class="well well-lg"><p>您好%s</p><h4>我们非常抱歉，您的预约没有成功,请直接联系400-845-0085</h4>'  % (data['clientName'])
+                content =  u'<p>您好%s</p><h4>我们非常抱歉，您的预约没有成功,请直接联系400-845-0085</h4>'  % (data['clientName'])
         except:
-           content =  u'<div class="well well-lg"><p>您好%s</p><h4>我们非常抱歉，您的预约没有成功,请直接联系400-845-0085</h4>'  % (data['clientName'])
+           content =  u'<p>您好%s</p><h4>我们非常抱歉，您的预约没有成功,请直接联系400-845-0085</h4>'  % (data['clientName'])
         
         return HttpResponse(content)        
