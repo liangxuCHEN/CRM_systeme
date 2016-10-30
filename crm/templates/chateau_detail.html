@@ -6,16 +6,17 @@
 {% block service %} {{service_phone}} {% endblock %}
 {% block content %}
 <div class="row">
-<div class="page-header">
-<h3>{{chateau.cn_name}}<small>{{chateau.name}}</small></h3>
-</div>
-<div class="panel panel-info">
+<div class="col-sm-6 col-md-9">
+ <div class="page-header">
+ <h3>{{chateau.cn_name}}<small>{{chateau.name}}</small></h3>
+  </div>
+  <div class="panel panel-info">
   <div class="panel-heading">地区</div>
   <div class="panel-body">
     {{chateau.place}}
   </div>
-</div>
-<div class="panel panel-info">
+ </div>
+ <div class="panel panel-info">
   <div class="panel-heading">酒庄介绍</div>
   <div class="panel-body">
     {{chateau.presentation_chateau}}
@@ -40,26 +41,28 @@
    {% endfor %}
 {% endif %}
 <a href="{% url 'chateau' %}" class="btn btn-primary btn-lg" role="button">返回</a>
-
+</div>
 
 
   {% if display %}
-  <div class="row">
+<div class="col-sm-6 col-md-3">
     <div class="page-header">
       <h3>相关酒庄推荐</h3>
       </div>
     {% for item in display %}
-        <div class="col-sm-3 col-md-4">
+        <div class="col-sm-4 col-md-12">
           <div class="thumbnail">
+            <a href="{% url 'chateau_detail' item.id site%}">
             <img class="img-circle" src="{{item.pic_url}}?imageView2/1/w/200/interlace/0/q/100">
-              <h4><a href="{% url 'chateau_detail' item.id site%}">{{item.cn_name}}</a></h4>
+            </a>
+              <h4 class="center-block" style="width:120px;">{{item.cn_name}}</h4>
           </div>
         </div>
      {% endfor %}
   </div>
   {% endif %}
-
 </div>
+
 
 <!-- Modal -->
 <form role="form" action="{% url 'booking_service' %}" method="POST" id="form1">

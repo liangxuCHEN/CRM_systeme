@@ -25,7 +25,7 @@ html{    background:url(http://7xoom6.com1.z0.glb.clouddn.com/bg-psb.jpg) no-rep
   <div class="page-header">
     <button class="btn btn-success">搜索酒庄</button>
     <div class="form-group">
-      <input type="text" class="form-control" name="place" placeholder="输入地点:城市或产区">
+      <input type="text" class="form-control" name="place" placeholder="输入地区或城市">
     </div>
     <div class="form-group">
       <input type="text" class="form-control" name="chateau_cn" placeholder="输入酒庄中文名">
@@ -39,7 +39,7 @@ html{    background:url(http://7xoom6.com1.z0.glb.clouddn.com/bg-psb.jpg) no-rep
   {% if chateau_list %}
   <div class="row">
     {% for chateau in chateau_list %}
-        <div class="col-xs-6 col-md-4 col-lg-6">
+        <div class="col-sm-6 col-md-4 col-lg-6">
           <div class="thumbnail">
             <img class="img-circle" src="{{chateau.pic_url}}?imageView2/1/w/200/interlace/0/q/100">
             <div class="caption">
@@ -53,5 +53,25 @@ html{    background:url(http://7xoom6.com1.z0.glb.clouddn.com/bg-psb.jpg) no-rep
      {% endfor %}
   </div>
   {% endif %}
+    <div class="pull-left">
+      <ul class="pagination">
+            {% if chateau_list.has_previous %}
+                <li><a href="?page={{ chateau_list.previous_page_number }}">prev</a></li>
+            {% endif %}
+            <script type="text/javascript">
+            for (var i=1;i<={{ chateau_list.paginator.num_pages }};i++)
+            {
+             if (i == {{ chateau_list.number }}) {
+                document.write("<li class='active'> <a href='?page=" + i + "'>" + i + "</a></li>");
+             } else {
+              document.write("<li> <a href='?page=" + i + "'>" + i + "</a></li>");
+             }
+            }
+            </script>
+            {% if chateau_list.has_next %}
+               <li> <a href="?page={{ chateau_list.next_page_number }}">next</a></li>
+            {% endif %}
+      </ul>
+  </div>
 <div>
 {% endblock %}
