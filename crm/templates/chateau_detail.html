@@ -3,7 +3,7 @@
 {% block head %}
 </style>
 {% endblock %}
-{% block service %} {{service_phone}} {% endblock %}
+{% block service %} {{site}} : {{service_phone}} {% endblock %}
 {% block content %}
 <div class="row">
 <div class="col-sm-6 col-md-9">
@@ -40,7 +40,7 @@
       </div>
    {% endfor %}
 {% endif %}
-<a href="{% url 'chateau' %}" class="btn btn-primary btn-lg" role="button">返回</a>
+<a href="/chateau/?site={{site}}&service_phone={{service_phone}}" class="btn btn-primary btn-lg" role="button">返回</a>
 </div>
 
 

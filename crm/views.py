@@ -388,7 +388,7 @@ def chateau_detail(request, chateau_id, site):
     if services:
         content['service_list'] = services
 
-    content["service_phone"] = site + " : 400-845-0085"
+    content["service_phone"] = "400-845-0085"
     content["site"] = site
     return render(request, 'chateau_detail.html', content)
 
