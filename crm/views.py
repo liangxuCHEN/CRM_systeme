@@ -347,12 +347,15 @@ def chateau_index(request):
     chateaus = Chateau.objects.all()
     if request.method == "POST":
         data = request.POST
-        if data["place"]!="":
-            chateaus = chateaus.filter(place__contains=data["place"])
         if data["chateau"]!="":
             chateaus = chateaus.filter(name__contains=data["chateau"])
         if data["chateau_cn"]!="":
             chateaus = chateaus.filter(cn_name__contains=data["chateau_cn"])
+    try:
+        zone = request.GET['zone']
+        chateaus = chateaus.filter(place__contains=zone)
+    except:
+        pass
 
     page_size =  6
     paginator = Paginator(chateaus, page_size)
@@ -375,7 +378,9 @@ def chateau_index(request):
         service_phone = "400-845-0085"
 
     content["from_site"]=site
-    content["service_phone"]=site + u"客服 : "+ service_phone
+    content["service_phone"]= service_phone
+    
+
     
     return render(request, 'chateau.html', content)
 
