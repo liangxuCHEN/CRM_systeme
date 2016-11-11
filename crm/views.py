@@ -386,6 +386,7 @@ def chateau_index(request):
 
 def chateau_detail(request, chateau_id, site):
     content = {}
+    print chateau_id
     chateau = Chateau.objects.get(id=chateau_id)
     services = Service.objects.filter(chateau_id = chateau_id)
     content["display"] = Chateau.objects.random_chose_chateau(3)
