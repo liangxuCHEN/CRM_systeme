@@ -352,8 +352,8 @@ def chateau_index(request):
         if data["chateau_cn"]!="":
             chateaus = chateaus.filter(cn_name__contains=data["chateau_cn"])
     try:
-        zone = request.GET['zone']
-        chateaus = chateaus.filter(place__contains=zone)
+        content['zone'] = request.GET['zone']
+        chateaus = chateaus.filter(place__contains=content['zone'])
     except:
         pass
 

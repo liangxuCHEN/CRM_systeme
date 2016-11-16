@@ -69,20 +69,20 @@ html{    background:url(http://7xoom6.com1.z0.glb.clouddn.com/bg-psb.jpg) no-rep
     <div class="pull-left">
       <ul class="pagination">
             {% if chateau_list.has_previous %}
-                <li><a href="?page={{ chateau_list.previous_page_number }}">prev</a></li>
+                <li><a href="?site={{from_site}}&service_phone={{service_phone}}&zone={{zone}}&page={{ chateau_list.previous_page_number }}">prev</a></li>
             {% endif %}
             <script type="text/javascript">
             for (var i=1;i<={{ chateau_list.paginator.num_pages }};i++)
             {
              if (i == {{ chateau_list.number }}) {
-                document.write("<li class='active'> <a href='?page=" + i + "'>" + i + "</a></li>");
+                document.write("<li class='active'> <a href='?site={{from_site}}&service_phone={{service_phone}}&zone={{zone}}&page=" + i + "'>" + i + "</a></li>");
              } else {
-              document.write("<li> <a href='?page=" + i + "'>" + i + "</a></li>");
+              document.write("<li> <a href='?site={{from_site}}&service_phone={{service_phone}}&zone={{zone}}&page=" + i + "'>" + i + "</a></li>");
              }
             }
             </script>
             {% if chateau_list.has_next %}
-               <li> <a href="?page={{ chateau_list.next_page_number }}">next</a></li>
+               <li> <a href="?site={{from_site}}&service_phone={{service_phone}}&zone={{zone}}&page={{ chateau_list.next_page_number }}">next</a></li>
             {% endif %}
       </ul>
   </div>
